@@ -1558,6 +1558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 776197248}
+  spriterenderer: {fileID: 776197246}
   velocidad: 0.01
   coins: 0
   coinSound: {fileID: 0}
