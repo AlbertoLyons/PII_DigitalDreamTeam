@@ -9,9 +9,10 @@ public class Player : MonoBehaviour
     public float velocidad = 0.01f;
     public int coins = 0;
 
-
-    public AudioSource coinSound;
-    public AudioClip OtherSound;
+    public AudioSource audiosource;
+    public AudioClip coinSound;
+    public AudioClip dodgeSound;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +42,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightArrow)) {
             animator.SetBool("Derecha", false);
         }
-
-        //Movimiento hacia arriba
+        /*Movimiento hacia arriba
         if (Input.GetKey(KeyCode.UpArrow)) {
             transform.Translate(0, velocidad, 0);
         }
@@ -50,11 +50,23 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow)) {
             transform.Translate(0, -velocidad, 0);
         }
+        */
+
+        
     }
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("coin")) {
             Destroy(other.gameObject);
+            audiosource.clip = coinSound;
+            audiosource.Play();
             coins++;
+
+        }
+        if (other.gameObject.CompareTag("Enemy")) {
+            if (Input.GetKey(KeyCode.UpArrow)){
+                audiosource.clip = dodgeSound;
+                audiosource.Play();
+            }
 
         }
 
