@@ -6,6 +6,9 @@ TagManager:
   tags:
   - coin
   - Enemy
+  - Pasto
+  - Hielo
+  - Petroleo
   layers:
   - Default
   - TransparentFX

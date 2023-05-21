@@ -54,6 +54,22 @@ public class Player : MonoBehaviour
 
         
     }
+    
+    void OnCollisionStay2D(Collision2D other) {
+
+        if (other.gameObject.CompareTag("Pasto")){
+            velocidad = 0.01f;
+        }
+
+        if (other.gameObject.CompareTag("Petroleo")){
+            velocidad = 0.001f;
+        }
+
+        if(other.gameObject.CompareTag("Hielo")){
+            velocidad = 0.02f;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("coin")) {
             Destroy(other.gameObject);
