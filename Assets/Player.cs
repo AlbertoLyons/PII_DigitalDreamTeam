@@ -13,11 +13,12 @@ public class Player : MonoBehaviour{
     public AudioClip coinSound;
     public AudioClip dodgeSound;
     public AudioClip damageSound;
-    
+
 
     // Start is called before the first frame update
     void Start(){
         //coinSound = GetComponent<>
+        spriterenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -41,17 +42,9 @@ public class Player : MonoBehaviour{
         if (Input.GetKeyUp(KeyCode.RightArrow)) {
             animator.SetBool("Derecha", false);
         }
-        /*Movimiento hacia arriba
-        if (Input.GetKey(KeyCode.UpArrow)) {
-            transform.Translate(0, velocidad, 0);
-        }
-        //Movimiento hacia abajo
-        if (Input.GetKey(KeyCode.DownArrow)) {
-            transform.Translate(0, -velocidad, 0);
-        }
-        */ 
+        
     }
-    
+
     void OnCollisionStay2D(Collision2D other) {
 
         if (other.gameObject.CompareTag("Pasto")){
@@ -73,27 +66,28 @@ public class Player : MonoBehaviour{
             audiosource.clip = coinSound;
             audiosource.Play();
             coins++;
-
         }
         if (other.gameObject.CompareTag("Enemy")) {
             if (Input.GetKey(KeyCode.UpArrow)){
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
             }
-        }
-        if (other.gameObject.CompareTag("Enemy")) {
-            audiosource.clip = damageSound;
-            audiosource.Play();
-            velocidad = velocidad*0.01f;
-            
+            else{
+                audiosource.clip = damageSound;
+                audiosource.Play();
+                velocidad = velocidad*0.01f;
+                spriterenderer.color = new Color (1, 0, 0, 1); 
+
+            }
         }
         if (other.gameObject.CompareTag("Disparo")) {
             Destroy(other.gameObject);
             audiosource.clip = damageSound;
             HP = HP - 1;
-            
+
         }
-
-
+    }
+    void OnTriggerExit2D(Collider2D other){
+        spriterenderer.color = new Color (1, 1, 1, 1); 
     }
 }
