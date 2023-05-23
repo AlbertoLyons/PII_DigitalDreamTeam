@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour{
     public Animator animator;
     public SpriteRenderer spriterenderer;
     public float velocidad = 0.01f;
     public int coins = 0;
+    public int HP = 6;
 
     public AudioSource audiosource;
     public AudioClip coinSound;
     public AudioClip dodgeSound;
+    public AudioClip damageSound;
     
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         //coinSound = GetComponent<>
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         //Movimiento a la izquierda
         if (Input.GetKey(KeyCode.LeftArrow)) {
             spriterenderer.flipX = true;
@@ -50,9 +49,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow)) {
             transform.Translate(0, -velocidad, 0);
         }
-        */
-
-        
+        */ 
     }
     
     void OnCollisionStay2D(Collision2D other) {
@@ -83,7 +80,18 @@ public class Player : MonoBehaviour
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
             }
-
+        }
+        if (other.gameObject.CompareTag("Enemy")) {
+            audiosource.clip = damageSound;
+            audiosource.Play();
+            velocidad = velocidad*0.01f;
+            
+        }
+        if (other.gameObject.CompareTag("Disparo")) {
+            Destroy(other.gameObject);
+            audiosource.clip = damageSound;
+            HP = HP - 1;
+            
         }
 
     }

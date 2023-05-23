@@ -742,9 +742,11 @@ MonoBehaviour:
   spriterenderer: {fileID: 776197246}
   velocidad: 0.01
   coins: 0
+  HP: 6
   audiosource: {fileID: 776197252}
   coinSound: {fileID: 8300000, guid: 4132f3199802d0249bdbc9f000958240, type: 3}
   dodgeSound: {fileID: 8300000, guid: c00f5d62d1ec1d84985544950672f9f1, type: 3}
+  damageSound: {fileID: 8300000, guid: 9ffc78c465beb8e40aed342e0ff6501a, type: 3}
 --- !u!82 &776197252
 AudioSource:
   m_ObjectHideFlags: 0
