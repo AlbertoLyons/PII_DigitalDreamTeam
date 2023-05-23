@@ -10,6 +10,7 @@ TagManager:
   - Hielo
   - Petroleo
   - Disparo
+  - Meteorito
   layers:
   - Default
   - TransparentFX
