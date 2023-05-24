@@ -66,6 +66,8 @@ public class Player : MonoBehaviour{
             audiosource.clip = coinSound;
             audiosource.Play();
             coins++;
+            var HudManager = FindObjectOfType<hudManager>();
+            HudManager.AddMoney(coins);
         }
         if (other.gameObject.CompareTag("Enemy")) {
             if (Input.GetKey(KeyCode.UpArrow)){
