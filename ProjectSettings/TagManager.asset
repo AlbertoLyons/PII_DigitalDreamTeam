@@ -12,6 +12,7 @@ TagManager:
   - Disparo
   - Meteorito
   - PuntoFinal
+  - MenuMusic
   layers:
   - Default
   - TransparentFX

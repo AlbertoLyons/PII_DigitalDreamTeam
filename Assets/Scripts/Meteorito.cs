@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Meteorito : MonoBehaviour
 {
     [SerializeField] private float rotacion = 0.1f;
     [SerializeField] private float velocidad = 0.001f;
     [SerializeField] private AudioSource audiosource;
+    AudioMenu menu;
     // Update is called once per frame
     void Update()
     {
@@ -19,9 +21,20 @@ public class Meteorito : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             Destroy(other.gameObject);
-            audiosource.Play();
-
             
+            audiosource.Play();
+            menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
+            menu.stopMusic();
+            StartCoroutine(Coroutine());
         }
+    }
+    public void ChangeScene(string nameScene) {
+        SceneManager.LoadScene(nameScene);
+    }
+    IEnumerator Coroutine()
+    {
+        yield return new WaitForSeconds(2);
+        ChangeScene("Menu");
+        
     }
 }
