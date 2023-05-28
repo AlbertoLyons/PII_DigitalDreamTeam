@@ -45,7 +45,7 @@ public class Player : MonoBehaviour{
         
     }
 
-    void OnCollisionStay2D(Collision2D other) {
+    /**void OnCollisionStay2D(Collision2D other) {
 
         if (other.gameObject.CompareTag("Pasto")){
             velocidad = 0.01f;
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour{
         if(other.gameObject.CompareTag("Hielo")){
             velocidad = 0.02f;
         }
-    }
+    }**/
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("coin")) {
@@ -77,7 +77,7 @@ public class Player : MonoBehaviour{
             else{
                 audiosource.clip = damageSound;
                 audiosource.Play();
-                velocidad = velocidad*0.01f;
+                //velocidad = velocidad*0.01f;
                 spriterenderer.color = new Color (1, 0, 0, 1); 
 
             }
