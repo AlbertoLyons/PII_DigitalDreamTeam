@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour{
-    public Animator animator;
-    public SpriteRenderer spriterenderer;
-    public float velocidad = 0.01f;
-    public int coins = 0;
-    public int HP = 6;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriterenderer;
+    [SerializeField] private float velocidad = 0.01f;
+    [SerializeField] private int coins = 0;
+    [SerializeField] private int HP = 6;
 
-    public AudioSource audiosource;
-    public AudioClip coinSound;
-    public AudioClip dodgeSound;
-    public AudioClip damageSound;
+    [SerializeField] private AudioSource audiosource;
+    [SerializeField] private AudioClip coinSound;
+    [SerializeField] private AudioClip dodgeSound;
+    [SerializeField] private AudioClip damageSound;
 
 
     // Start is called before the first frame update

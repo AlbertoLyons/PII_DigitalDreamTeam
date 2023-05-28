@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Camara : MonoBehaviour
 {
-    public GameObject jugador;
-    public Vector2 minimo;
-    public Vector2 maximo;
-    public float suavizado;
-    Vector2 velocity;
+    [SerializeField] private GameObject jugador;
+    [SerializeField] private Vector2 minimo;
+    [SerializeField] private Vector2 maximo;
+    [SerializeField] private float suavizado;
+    [SerializeField] private Vector2 velocity;
 
 
     // Start is called before the first frame update
