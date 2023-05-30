@@ -8,6 +8,10 @@ public class Player : MonoBehaviour{
     [SerializeField] private float velocidad = 0.01f;
     [SerializeField] private int coins = 0;
     [SerializeField] private int HP = 6;
+    //[SerializeField] private float velocidadRotacion;
+    //[SerializeField] public float rotZ;
+    //[SerializeField] public bool sentidoHorario;
+    
 
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private AudioClip coinSound;
@@ -73,6 +77,8 @@ public class Player : MonoBehaviour{
             if (Input.GetKey(KeyCode.UpArrow)){
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
+                //rotZ += Time.deltaTime * velocidadRotacion;
+               //transform.rotation = Quaternion.Euler(0, 0, rotZ);
             }
             else{
                 audiosource.clip = damageSound;
