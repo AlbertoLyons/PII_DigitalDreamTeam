@@ -8,6 +8,7 @@ public class GeneradorNivel : MonoBehaviour
     [SerializeField] private float distanciaMinima;
     [SerializeField] private Transform puntoFinal;
     [SerializeField] private int cantidadInicial;
+    [SerializeField] private float delay;
     private Transform jugador;
 
     private GameObject nivelActual;
@@ -40,7 +41,7 @@ public class GeneradorNivel : MonoBehaviour
 
         Camera.main.Render();
 
-        StartCoroutine(DestruirNivelDespuesDeDelay(nivelActual, 15f));
+        StartCoroutine(DestruirNivelDespuesDeDelay(nivelActual, delay));
     }
 
     Transform BuscarPuntoFinal(GameObject parteNivel, string etiqueta){
