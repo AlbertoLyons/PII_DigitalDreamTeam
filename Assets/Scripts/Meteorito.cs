@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Meteorito : MonoBehaviour
 {
-    [SerializeField] private float rotacion = 0.8f;
-    [SerializeField] private float velocidad = 0.1f;
+    [SerializeField] private float rotacion = 1.0f;
+    [SerializeField] private float velocidad = 0.08f;
     [SerializeField] private AudioSource audiosource;
     AudioMenu menu;
     // Update is called once per frame
