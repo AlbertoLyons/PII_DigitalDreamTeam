@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotacion: 1
-  velocidad: 0.08
+  velocidad: 0.064
   audiosource: {fileID: 298500683}
 --- !u!82 &298500683
 AudioSource:

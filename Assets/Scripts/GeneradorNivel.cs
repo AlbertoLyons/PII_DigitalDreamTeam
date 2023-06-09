@@ -22,9 +22,9 @@ public class GeneradorNivel : MonoBehaviour
     }
 
     void Update() {
+        Debug.Log(jugador.position);
         float jugadorY = jugador.position.y;
-        float puntoY = puntoFinal.position.y;
-
+        float puntoY = puntoFinal.position.y + 3;
         if (Mathf.Abs(jugadorY - puntoY) < distanciaMinima){
             for (int i = 0; i < 3; i++){
                 GenerarParteNivel();
@@ -34,6 +34,7 @@ public class GeneradorNivel : MonoBehaviour
     }
 
     void GenerarParteNivel(){
+        // puntoFinal.position = new Vector3(puntoFinal.x, puntoFinal.y-6, puntoFinal.z);
         Vector3 puntoY = new Vector3(-12.06f, puntoFinal.position.y - 0.843264f);
         int numeroAleatorio = Random.Range(0, partesNivel.Length);
         nivelActual = Instantiate(partesNivel[numeroAleatorio], puntoY, Quaternion.identity);
