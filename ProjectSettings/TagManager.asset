@@ -13,6 +13,7 @@ TagManager:
   - Meteorito
   - PuntoFinal
   - MenuMusic
+  - Escudo
   layers:
   - Default
   - TransparentFX

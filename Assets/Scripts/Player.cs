@@ -8,6 +8,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private float velocidad = 0.1f;
     [SerializeField] private int coins = 0;
     [SerializeField] private int HP = 6;
+    [SerializeField] private int countShield = 3;
     //[SerializeField] private float velocidadRotacion;
     //[SerializeField] public float rotZ;
     //[SerializeField] public bool sentidoHorario;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private AudioClip coinSound;
     [SerializeField] private AudioClip dodgeSound;
     [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip shieldSound;
 
 
     // Start is called before the first frame update
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
+        
         //Movimiento a la izquierda
         if (Input.GetKey(KeyCode.LeftArrow)) {
             spriterenderer.flipX = true;
@@ -65,6 +68,7 @@ public class Player : MonoBehaviour{
     }**/
 
     void OnTriggerEnter2D(Collider2D other) {
+        
         if (other.gameObject.CompareTag("coin")) {
             Destroy(other.gameObject);
             audiosource.clip = coinSound;
@@ -73,6 +77,18 @@ public class Player : MonoBehaviour{
             var HudManager = FindObjectOfType<hudManager>();
             HudManager.AddMoney(coins);
         }
+        if (other.gameObject.CompareTag("Escudo")) {
+            Destroy(other.gameObject);
+
+            countShield = 3;
+            audiosource.clip = shieldSound;
+            audiosource.Play();
+
+            var object_UI = FindObjectOfType<Object_UI>();
+
+            object_UI.shieldColor(true);
+            
+        }
         if (other.gameObject.CompareTag("Enemy")) {
             if (Input.GetKey(KeyCode.UpArrow)){
                 audiosource.clip = dodgeSound;
@@ -80,7 +96,23 @@ public class Player : MonoBehaviour{
                 //rotZ += Time.deltaTime * velocidadRotacion;
                //transform.rotation = Quaternion.Euler(0, 0, rotZ);
             }
+            else if (countShield > 0) {
+                countShield--;
+                Debug.Log(countShield);
+                audiosource.clip = dodgeSound;
+                audiosource.Play();
+                if (countShield == 0) {
+                    var object_UI = FindObjectOfType<Object_UI>();
+                    audiosource.pitch = 2f;
+                    audiosource.clip = shieldSound;
+                    audiosource.Play();
+                    audiosource.pitch = 1f;
+                    object_UI.shieldColor(false);
+                }
+
+            }
             else{
+            
                 audiosource.clip = damageSound;
                 audiosource.Play();
                 //velocidad = velocidad*0.01f;
