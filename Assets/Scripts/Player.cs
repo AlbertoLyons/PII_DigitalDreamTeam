@@ -9,6 +9,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private int coins = 0;
     [SerializeField] private int HP = 6;
     [SerializeField] private int countShield = 3;
+    [SerializeField] private int multiplicador = 1;
     //[SerializeField] private float velocidadRotacion;
     //[SerializeField] public float rotZ;
     //[SerializeField] public bool sentidoHorario;
@@ -19,7 +20,10 @@ public class Player : MonoBehaviour{
     [SerializeField] private AudioClip dodgeSound;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip shieldSound;
-
+    [SerializeField] private AudioClip fastBoots;
+    [SerializeField] private AudioClip slowBoots;
+    [SerializeField] private AudioClip time;
+    [SerializeField] private AudioClip xCoins;
 
     // Start is called before the first frame update
     void Start(){
@@ -73,7 +77,7 @@ public class Player : MonoBehaviour{
             Destroy(other.gameObject);
             audiosource.clip = coinSound;
             audiosource.Play();
-            coins++;
+            coins = coins + 1*multiplicador;
             var HudManager = FindObjectOfType<hudManager>();
             HudManager.AddMoney(coins);
         }
@@ -87,7 +91,54 @@ public class Player : MonoBehaviour{
             var object_UI = FindObjectOfType<Object_UI>();
 
             object_UI.shieldColor(true);
-            
+        }
+        //////////////////////////////////////////////////
+        if (other.gameObject.CompareTag("CoinsX2")) {
+            Destroy(other.gameObject);
+
+            audiosource.clip = xCoins;
+            audiosource.Play();
+            multiplicador = 3;
+            var object_UI = FindObjectOfType<Object_UI>();
+
+            object_UI.showMultiplier("X2");
+            StartCoroutine(coinMultiplier(4, "X2"));
+        }
+        if (other.gameObject.CompareTag("CoinsX3")) {
+            Destroy(other.gameObject);
+
+            audiosource.clip = xCoins;
+            audiosource.Play();
+            multiplicador = 3;
+            var object_UI = FindObjectOfType<Object_UI>();
+
+            object_UI.showMultiplier("X3");
+            StartCoroutine(coinMultiplier(4, "X3"));
+        }
+        ////////////////////////////////////////////////////
+        if (other.gameObject.CompareTag("BotasMas")) {
+            Destroy(other.gameObject);
+
+            audiosource.clip = fastBoots;
+            audiosource.Play();
+            velocidad = 0.15f;
+            StartCoroutine(Botas(4));
+        }
+        if (other.gameObject.CompareTag("Reloj")) {
+            Destroy(other.gameObject);
+
+            audiosource.clip = time;
+            audiosource.Play();
+            Time.timeScale = 0.5f;
+            StartCoroutine(slowTime(3));
+        }
+        if (other.gameObject.CompareTag("BotasMenos")) {
+            Destroy(other.gameObject);
+
+            audiosource.clip = slowBoots;
+            audiosource.Play();
+            velocidad = 0.05f;
+            StartCoroutine(Botas(4));
         }
         if (other.gameObject.CompareTag("Enemy")) {
             if (Input.GetKey(KeyCode.UpArrow)){
@@ -129,5 +180,22 @@ public class Player : MonoBehaviour{
     }
     void OnTriggerExit2D(Collider2D other){
         spriterenderer.color = new Color (1, 1, 1, 1); 
+    }
+    IEnumerator Botas(int segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        velocidad = 0.1f;
+    }
+    IEnumerator slowTime(int segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        Time.timeScale = 1f;
+    }
+    IEnumerator coinMultiplier(int segundos, string multiplier)
+    {
+        yield return new WaitForSeconds(segundos);
+        var object_UI = FindObjectOfType<Object_UI>();
+        object_UI.hideMultiplier();
+        multiplicador = 1;
     }
 }

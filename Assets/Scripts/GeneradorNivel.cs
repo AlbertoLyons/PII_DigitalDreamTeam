@@ -22,7 +22,6 @@ public class GeneradorNivel : MonoBehaviour
     }
 
     void Update() {
-        Debug.Log(jugador.position);
         float jugadorY = jugador.position.y;
         float puntoY = puntoFinal.position.y + 3;
         if (Mathf.Abs(jugadorY - puntoY) < distanciaMinima){
