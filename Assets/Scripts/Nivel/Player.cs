@@ -26,6 +26,8 @@ public class Player : MonoBehaviour{
     void Start(){
         //coinSound = GetComponent<>
         spriterenderer = GetComponent<SpriteRenderer>();
+
+        ObtenerPosicionY();
     }
 
     // Update is called once per frame
@@ -173,6 +175,7 @@ public class Player : MonoBehaviour{
             audiosource.clip = damageSound;
             HP = HP - 1;
 
+
         }
     }
     void OnTriggerExit2D(Collider2D other){
@@ -194,5 +197,13 @@ public class Player : MonoBehaviour{
         var object_UI = FindObjectOfType<Object_UI>();
         object_UI.hideMultiplier();
         multiplicador = 1;
+    }
+
+    public void ObtenerPosicionY(){
+
+        while(true){
+            Debug.Log(transform.position.y);
+        }
+        
     }
 }
