@@ -27,7 +27,7 @@ public class Player : MonoBehaviour{
         //coinSound = GetComponent<>
         spriterenderer = GetComponent<SpriteRenderer>();
 
-        ObtenerPosicionY();
+        
     }
 
     // Update is called once per frame
@@ -199,11 +199,5 @@ public class Player : MonoBehaviour{
         multiplicador = 1;
     }
 
-    public void ObtenerPosicionY(){
-
-        while(true){
-            Debug.Log(transform.position.y);
-        }
-        
-    }
+    
 }
