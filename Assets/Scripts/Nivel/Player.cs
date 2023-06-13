@@ -71,7 +71,7 @@ public class Player : MonoBehaviour{
             velocidad = 0.02f;
         }
     }**/
-
+    
     void OnTriggerEnter2D(Collider2D other) {
         
         if (other.gameObject.CompareTag("coin")) {

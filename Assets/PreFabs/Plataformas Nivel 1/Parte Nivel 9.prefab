@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 6591807613943194510}
   - component: {fileID: 6957679045770212446}
   - component: {fileID: 2146222821173750444}
+  - component: {fileID: 8919257114295302655}
   m_Layer: 0
   m_Name: idle_1 (1)
   m_TagString: Enemy
@@ -269,7 +270,8 @@ Transform:
   m_LocalPosition: {x: 6.3, y: -1.059, z: -0.4380689}
   m_LocalScale: {x: 0.32071, y: 0.30925998, z: 1.1453999}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3140467799752717156}
   m_Father: {fileID: 4708789757998104477}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -362,6 +364,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.2299998, y: 4.3800006}
   m_Direction: 0
+--- !u!114 &8919257114295302655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281287443859000299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533290f4175bd18419c223601e1f8854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proyectil: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
+  proyectilPos: {fileID: 3140467799752717156}
 --- !u!1 &3626202164723806697
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +718,37 @@ PolygonCollider2D:
       - {x: 0.08933807, y: 0.025887962}
       - {x: -0.015960952, y: 0.10641647}
       - {x: -0.08037743, y: 0.08881464}
+--- !u!1 &6840019803370918789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3140467799752717156}
+  m_Layer: 0
+  m_Name: proyectilPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3140467799752717156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840019803370918789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.04, y: -0.88, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3245606606504307992}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7554533830797965128
 GameObject:
   m_ObjectHideFlags: 0
