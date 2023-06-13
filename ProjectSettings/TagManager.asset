@@ -19,6 +19,7 @@ TagManager:
   - Reloj
   - CoinsX2
   - CoinsX3
+  - Wall
   layers:
   - Default
   - TransparentFX

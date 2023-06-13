@@ -21,6 +21,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private AudioClip slowBoots;
     [SerializeField] private AudioClip time;
     [SerializeField] private AudioClip xCoins;
+    public Object_UI escudo; 
 
     // Start is called before the first frame update
     void Start(){
@@ -89,9 +90,9 @@ public class Player : MonoBehaviour{
             audiosource.clip = shieldSound;
             audiosource.Play();
 
-            var object_UI = FindObjectOfType<Object_UI>();
+            //var object_UI = FindObjectOfType<Object_UI>();
 
-            object_UI.shieldColor(true);
+            escudo.shieldColor(true);
         }
         //////////////////////////////////////////////////
         if (other.gameObject.CompareTag("CoinsX2")) {
