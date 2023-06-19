@@ -29,7 +29,7 @@ public class EnemyShooting : MonoBehaviour
 
         float distanceY = Math.Abs(transform.position.y - player.transform.position.y);
 
-        Debug.Log(distanceX);
+
 
 
         if (distanceX < 9 && distanceY < 1)

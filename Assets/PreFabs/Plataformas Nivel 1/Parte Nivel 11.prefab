@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4708789757998104477}
+  - component: {fileID: 8485422718649366784}
   m_Layer: 0
   m_Name: Parte Nivel 11
   m_TagString: Untagged
@@ -68,6 +69,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8485422718649366784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199633404965172732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08097763b586ef247aed90a2c55675f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 100
 --- !u!1 &3936354536659050058
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +496,6 @@ GameObject:
   - component: {fileID: 4411920120237575044}
   - component: {fileID: 1939153017572584763}
   - component: {fileID: 6201630902716079071}
-  - component: {fileID: 7365513645232784348}
   m_Layer: 0
   m_Name: idle_1 (2)
   m_TagString: Enemy
@@ -595,20 +608,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.2299998, y: 4.3800006}
   m_Direction: 0
---- !u!114 &7365513645232784348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7535048139643204136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533290f4175bd18419c223601e1f8854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  proyectil: {fileID: 6937323393577261507, guid: c0b58d52c430a6041bf5511394d17b17, type: 3}
-  proyectilPos: {fileID: 8978389564446591292}
 --- !u!1 &8765579108242160280
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +620,6 @@ GameObject:
   - component: {fileID: 2560206877704200005}
   - component: {fileID: 4984821086110314956}
   - component: {fileID: 7248133492311541986}
-  - component: {fileID: 3976857238681653707}
   m_Layer: 0
   m_Name: idle_1 (1)
   m_TagString: Enemy
@@ -734,20 +732,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.2299998, y: 4.3800006}
   m_Direction: 0
---- !u!114 &3976857238681653707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8765579108242160280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533290f4175bd18419c223601e1f8854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  proyectil: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
-  proyectilPos: {fileID: 5772951101464476368}
 --- !u!1 &8939173089063075085
 GameObject:
   m_ObjectHideFlags: 0

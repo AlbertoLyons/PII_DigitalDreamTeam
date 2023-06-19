@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6937323393577261505}
   - component: {fileID: 6937323393577261511}
   - component: {fileID: 6503455650279180233}
+  - component: {fileID: 5128286847384309686}
   m_Layer: 0
   m_Name: proyectil
   m_TagString: Untagged
@@ -143,3 +144,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   force: 5
+  fieldOfViewAngle: 0
+--- !u!114 &5128286847384309686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937323393577261507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08097763b586ef247aed90a2c55675f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 3

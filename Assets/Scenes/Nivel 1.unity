@@ -721,7 +721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83ed2fda3c21f6a4584c23ca77acb3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shield: {fileID: 0}
   multiplier: {fileID: 268315752}
   multiplier2: {fileID: 21300000, guid: 1d1d6f2385f7712429a072084c5d759d, type: 3}
   multiplier3: {fileID: 21300000, guid: bb084b86ca3f9a04c9a11f5150a635fe, type: 3}
@@ -1078,7 +1077,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298500677}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1525,6 +1524,8 @@ GameObject:
   - component: {fileID: 453948440}
   - component: {fileID: 453948443}
   - component: {fileID: 453948444}
+  - component: {fileID: 453948445}
+  - component: {fileID: 453948446}
   m_Layer: 0
   m_Name: idle_1
   m_TagString: Enemy
@@ -1650,6 +1651,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proyectil: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
   proyectilPos: {fileID: 2096947978}
+--- !u!114 &453948445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453948439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f9e0e060a9a7646ba70012d6a96eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectToPool: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
+  poolSize: 3
+  poolCanExpand: 0
+--- !u!114 &453948446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453948439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f9e0e060a9a7646ba70012d6a96eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectToPool: {fileID: 6937323393577261507, guid: c0b58d52c430a6041bf5511394d17b17, type: 3}
+  poolSize: 3
+  poolCanExpand: 0
 --- !u!1 &481650964
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,7 +2059,8 @@ MonoBehaviour:
   slowBoots: {fileID: 8300000, guid: 3d301b369397720408967bb3266a7be6, type: 3}
   time: {fileID: 8300000, guid: 7ad8e5d93a9a5124992b8906bfad08cd, type: 3}
   xCoins: {fileID: 8300000, guid: f8a5793ddbc39634e9b9832c23f3a8e1, type: 3}
-  escudo: {fileID: 643911777}
+  escudo: {fileID: 643911780}
+  multiplicadorUI: {fileID: 268315751}
 --- !u!50 &551013804
 Rigidbody2D:
   serializedVersion: 4
@@ -2183,7 +2215,7 @@ GameObject:
   - component: {fileID: 643911776}
   - component: {fileID: 643911779}
   - component: {fileID: 643911778}
-  - component: {fileID: 643911777}
+  - component: {fileID: 643911780}
   m_Layer: 5
   m_Name: Shield
   m_TagString: Untagged
@@ -2211,22 +2243,6 @@ RectTransform:
   m_AnchoredPosition: {x: -870, y: 440}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &643911777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643911775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ed2fda3c21f6a4584c23ca77acb3bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shield: {fileID: 643911778}
-  multiplier: {fileID: 0}
-  multiplier2: {fileID: 0}
-  multiplier3: {fileID: 0}
 --- !u!114 &643911778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,6 +2281,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643911775}
   m_CullTransparentMesh: 1
+--- !u!114 &643911780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643911775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0b267036dcbce41b4ce956427382a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shield: {fileID: 643911778}
 --- !u!1 &660172010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,6 +3314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1176462915}
   - component: {fileID: 1176462914}
+  - component: {fileID: 1176462916}
   m_Layer: 0
   m_Name: GeneradorNivel
   m_TagString: Untagged
@@ -3338,6 +3368,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176462916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176462913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f9e0e060a9a7646ba70012d6a96eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectToPool: {fileID: 3199633404965172732, guid: b6f87fc4968614f4099e9e213a0bf162, type: 3}
+  poolSize: 4
+  poolCanExpand: 1
 --- !u!1 &1218072501
 GameObject:
   m_ObjectHideFlags: 0

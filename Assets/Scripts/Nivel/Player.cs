@@ -8,10 +8,9 @@ public class Player : MonoBehaviour{
     [SerializeField] private float velocidad = 0.1f;
     [SerializeField] private int coins = 0;
     [SerializeField] private int HP = 6;
-    [SerializeField] private int countShield = 3;
+    [SerializeField] private int countShield = 0;
     [SerializeField] private int multiplicador = 1;
     
-
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private AudioClip coinSound;
     [SerializeField] private AudioClip dodgeSound;
@@ -21,19 +20,18 @@ public class Player : MonoBehaviour{
     [SerializeField] private AudioClip slowBoots;
     [SerializeField] private AudioClip time;
     [SerializeField] private AudioClip xCoins;
-    public Object_UI escudo; 
+    [SerializeField] private Shield_UI escudo;
+    [SerializeField] private Multiplier_UI multiplicadorUI;
 
     // Start is called before the first frame update
     void Start(){
+        countShield = 0;
         //coinSound = GetComponent<>
         spriterenderer = GetComponent<SpriteRenderer>();
-
-        
     }
 
     // Update is called once per frame
     void Update(){
-        
         //Movimiento a la izquierda
         if (Input.GetKey(KeyCode.LeftArrow)) {
             spriterenderer.flipX = true;
@@ -89,9 +87,6 @@ public class Player : MonoBehaviour{
             countShield = 3;
             audiosource.clip = shieldSound;
             audiosource.Play();
-
-            //var object_UI = FindObjectOfType<Object_UI>();
-
             escudo.shieldColor(true);
         }
         //////////////////////////////////////////////////
@@ -101,9 +96,7 @@ public class Player : MonoBehaviour{
             audiosource.clip = xCoins;
             audiosource.Play();
             multiplicador = 2;
-            var object_UI = FindObjectOfType<Object_UI>();
-
-            object_UI.showMultiplier("X2");
+            multiplicadorUI.showMultiplier("X2");
             StartCoroutine(coinMultiplier(4, "X2"));
         }
         if (other.gameObject.CompareTag("CoinsX3")) {
@@ -112,9 +105,7 @@ public class Player : MonoBehaviour{
             audiosource.clip = xCoins;
             audiosource.Play();
             multiplicador = 3;
-            var object_UI = FindObjectOfType<Object_UI>();
-
-            object_UI.showMultiplier("X3");
+            multiplicadorUI.showMultiplier("X3");
             StartCoroutine(coinMultiplier(4, "X3"));
         }
         ////////////////////////////////////////////////////
@@ -149,16 +140,14 @@ public class Player : MonoBehaviour{
             }
             else if (countShield > 0) {
                 countShield--;
-                Debug.Log(countShield);
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
                 if (countShield == 0) {
-                    var object_UI = FindObjectOfType<Object_UI>();
                     audiosource.pitch = 2f;
                     audiosource.clip = shieldSound;
                     audiosource.Play();
                     audiosource.pitch = 1f;
-                    object_UI.shieldColor(false);
+                    escudo.shieldColor(false);
                 }
 
             }
@@ -195,8 +184,7 @@ public class Player : MonoBehaviour{
     IEnumerator coinMultiplier(int segundos, string multiplier)
     {
         yield return new WaitForSeconds(segundos);
-        var object_UI = FindObjectOfType<Object_UI>();
-        object_UI.hideMultiplier();
+        multiplicadorUI.hideMultiplier();
         multiplicador = 1;
     }
 
