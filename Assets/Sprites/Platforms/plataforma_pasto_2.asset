@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: plataforma_pasto_2
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -1564963621, guid: 24ebd823ea5c52a409aa9c8e21a86070, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8901961, g: 1, b: 0.92156863, a: 1}
   m_Transform:
     e00: 1
     e01: 0

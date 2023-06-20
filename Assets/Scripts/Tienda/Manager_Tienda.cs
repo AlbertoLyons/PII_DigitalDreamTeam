@@ -18,6 +18,7 @@ public class Manager_Tienda : MonoBehaviour
     {
 
         AddCoins();
+        PlayerPrefs.SetInt("run_coins", 0);
         for (int i = 0; i < itemsTiendaSO.Length; i++)
             panelesTiendaGO[i].SetActive(true);
         coinUI.text = coins.ToString();
@@ -30,15 +31,12 @@ public class Manager_Tienda : MonoBehaviour
     {
         PlayerPrefs.SetInt("shop_coins", coins);
     }
-    /////////////////////////////////////////////////////////////////////
-    //Este metodo es solo para testing, no se implementa en el juego real
     public void AddCoins()
     {
         coins = PlayerPrefs.GetInt("shop_coins") + PlayerPrefs.GetInt("run_coins");
         coinUI.text = coins.ToString();
         IsComprable();
     }
-    /////////////////////////////////////////////////////////////////////
 
     public void IsComprable()
     {

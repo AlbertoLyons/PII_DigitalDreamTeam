@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: plataformas-Sheet_0
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 699554770, guid: 1c0fdb4f422d53444986e6463df396f5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8915094, g: 1, b: 0.92315984, a: 1}
   m_Transform:
     e00: 1
     e01: 0

@@ -7,7 +7,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private SpriteRenderer spriterenderer;
     [SerializeField] private float velocidad = 0.1f;
     [SerializeField] private int coins = 0;
-    [SerializeField] private int HP = 6;
+    //[SerializeField] private int HP = 6;
     [SerializeField] private int countShield = 0;
     [SerializeField] private int multiplicador = 1;
     
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private AudioClip slowBoots;
     [SerializeField] private AudioClip time;
     [SerializeField] private AudioClip xCoins;
+    [SerializeField] private AudioClip Ralentizacion;
     [SerializeField] private Shield_UI escudo;
     [SerializeField] private Multiplier_UI multiplicadorUI;
 
@@ -151,25 +152,53 @@ public class Player : MonoBehaviour{
                 }
 
             }
-            else{
+            // danio recibido por alien al jugador 
+            // else{
             
-                audiosource.clip = damageSound;
-                audiosource.Play();
-                //velocidad = velocidad*0.01f;
-                spriterenderer.color = new Color (1, 0, 0, 1); 
+            //     audiosource.clip = damageSound;
+            //     audiosource.Play();
+            //     //velocidad = velocidad*0.01f;
+            //     spriterenderer.color = new Color (1, 0, 0, 1); 
 
-            }
+            // }
         }
         if (other.gameObject.CompareTag("Disparo")) {
             Destroy(other.gameObject);
-            audiosource.clip = damageSound;
-            HP = HP - 1;
+            audiosource.clip = Ralentizacion;
+            audiosource.Play();
+
+            if (Input.GetKey(KeyCode.UpArrow)){
+                audiosource.clip = dodgeSound;
+                audiosource.Play();
+            }
+            else if (countShield > 0) {
+                countShield--;
+                audiosource.clip = dodgeSound;
+                audiosource.Play();
+                if (countShield == 0) {
+                    audiosource.pitch = 2f;
+                    audiosource.clip = shieldSound;
+                    audiosource.Play();
+                    audiosource.pitch = 1f;
+                    escudo.shieldColor(false);
+                }
+            }
+
+            else{
+
+                velocidad = velocidad*0.5f;
+                spriterenderer.color = new Color(0.0f, 0.6f, 0.8f, 1f);
+                Debug.Log("dispro");
+
+            }
 
 
         }
     }
     void OnTriggerExit2D(Collider2D other){
+
         spriterenderer.color = new Color (1, 1, 1, 1); 
+        velocidad = 0.1f;
     }
     IEnumerator Botas(int segundos)
     {

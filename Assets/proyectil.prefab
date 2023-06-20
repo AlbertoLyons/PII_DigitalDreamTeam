@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6937323393577261511}
   - component: {fileID: 6503455650279180233}
   - component: {fileID: 5128286847384309686}
+  - component: {fileID: 34004706262829535}
   m_Layer: 0
   m_Name: proyectil
-  m_TagString: Untagged
+  m_TagString: Disparo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,4 +158,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08097763b586ef247aed90a2c55675f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 3
+  lifeTime: 6
+--- !u!60 &34004706262829535
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937323393577261507}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.32}
+    newSize: {x: 0.48, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.10794495, y: -0.00045814365}
+      - {x: 0.0060914755, y: -0.04218008}
+      - {x: 0.09717396, y: -0.054060016}
+      - {x: 0.09297217, y: -0.05453395}
+      - {x: 0.119302526, y: -0.058751963}
+      - {x: 0.12812841, y: -0.06546602}
+      - {x: 0.18759623, y: -0.008593995}
+      - {x: 0.17223844, y: 0.046872057}
+      - {x: 0.0041100644, y: 0.024849977}
