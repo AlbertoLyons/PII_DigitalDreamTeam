@@ -49,6 +49,7 @@ public class EnemyShooting : MonoBehaviour
     void shoot()
     {
         Instantiate(proyectil, proyectilPos.position, Quaternion.identity);
+        
         animator.SetBool("disparo", true);
     }
 }

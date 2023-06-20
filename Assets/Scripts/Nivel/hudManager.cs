@@ -37,6 +37,7 @@ public class hudManager : MonoBehaviour
         menuPausa.SetActive(true);
         Time.timeScale = 0f;
         isPausado = true;
+        Player.velocidad = 0f;
         Meteorito.rotacion = 0f;
         Meteorito.velocidad = 0f;
         
@@ -47,6 +48,7 @@ public class hudManager : MonoBehaviour
             menuPausa.SetActive(false);
             Time.timeScale = 1f;
             isPausado = false;
+            Player.velocidad = 0.1f;
             Meteorito.rotacion = 1.0f;
             Meteorito.velocidad = 0.08f;
             

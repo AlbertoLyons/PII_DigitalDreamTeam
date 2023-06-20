@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour{
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriterenderer;
-    [SerializeField] private float velocidad = 0.1f;
+    public static float velocidad = 0.1f;
     [SerializeField] private int coins = 0;
     //[SerializeField] private int HP = 6;
     [SerializeField] private int countShield = 0;
