@@ -8,8 +8,16 @@ public class Meteorito : MonoBehaviour
     [SerializeField] private float rotacion = 1.0f;
     [SerializeField] private float velocidad = 0.08f;
     [SerializeField] private AudioSource audiosource;
+    [SerializeField] private GameObject menuMuerte;
     AudioMenu menu;
-    // Update is called once per frame
+   
+    private void Start()
+    {
+        rotacion = 1.0f;
+        velocidad = 0.08f;
+        Time.timeScale = 1f;
+    }
+  
     void Update()
     {
 
@@ -33,7 +41,11 @@ public class Meteorito : MonoBehaviour
     IEnumerator Coroutine()
     {
         yield return new WaitForSeconds(2);
-        ChangeScene("Menu");
+        menuMuerte.SetActive(true);
+        Time.timeScale = 0f;
+        velocidad = 0f;
+        rotacion = 0f;
+        //ChangeScene("Menu");
         
     }
 }
