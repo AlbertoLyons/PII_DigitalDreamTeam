@@ -33,24 +33,30 @@ public class Player : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
-        //Movimiento a la izquierda
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            spriterenderer.flipX = true;
-            transform.Translate(-velocidad, 0, 0);
-            animator.SetBool("Derecha", true);
-        }
-        if (Input.GetKeyUp(KeyCode.LeftArrow)) {
-            animator.SetBool("Derecha", false);
-        }
-        //Movimiento a la derecha
-        if (Input.GetKey(KeyCode.RightArrow)) {
-            spriterenderer.flipX = false;
-            transform.Translate(velocidad, 0, 0);
-            animator.SetBool("Derecha", true);
-        }
 
-        if (Input.GetKeyUp(KeyCode.RightArrow)) {
-            animator.SetBool("Derecha", false);
+        if(this != null){
+            //Movimiento a la izquierda
+            if (Input.GetKey(KeyCode.LeftArrow)) {
+                spriterenderer.flipX = true;
+                transform.Translate(-velocidad, 0, 0);
+                animator.SetBool("Derecha", true);
+            }
+            if (Input.GetKeyUp(KeyCode.LeftArrow)) {
+                animator.SetBool("Derecha", false);
+            }
+            //Movimiento a la derecha
+            if (Input.GetKey(KeyCode.RightArrow)) {
+                spriterenderer.flipX = false;
+                transform.Translate(velocidad, 0, 0);
+                animator.SetBool("Derecha", true);
+            }
+
+            if (Input.GetKeyUp(KeyCode.RightArrow)) {
+                animator.SetBool("Derecha", false);
+            }
+        }
+        else{
+            Debug.Log("");
         }
         // Guardado de monedas
         PlayerPrefs.SetInt("run_coins", coins);

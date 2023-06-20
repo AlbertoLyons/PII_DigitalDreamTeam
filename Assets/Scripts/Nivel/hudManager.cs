@@ -4,13 +4,55 @@ using UnityEngine;
 using TMPro;
 
 
+
 public class hudManager : MonoBehaviour
 {
+    public static bool isPausado;
+    public GameObject menuPausa;
     [SerializeField] private TextMeshProUGUI _textMoneyCount; //serializefield hace que el valor privado se vea en el unity
     [SerializeField] private int _moneyCount;
-   
+    void Start()
+    {
+        menuPausa.SetActive(false);
+    }
 
+    void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            if(isPausado)
+            {
+                continuarJuego();
+            }
+            else
+            {
+                pausaJuego();
+            }
+
+        }
+    }
     
+    public void pausaJuego()
+    {
+        menuPausa.SetActive(true);
+        Time.timeScale = 0f;
+        isPausado = true;
+        Meteorito.rotacion = 0f;
+        Meteorito.velocidad = 0f;
+        
+    }
+
+    public void continuarJuego()
+        {
+            menuPausa.SetActive(false);
+            Time.timeScale = 1f;
+            isPausado = false;
+            Meteorito.rotacion = 1.0f;
+            Meteorito.velocidad = 0.08f;
+            
+        }
+
+
     public void AddMoney(int value)
     {
 
@@ -19,4 +61,5 @@ public class hudManager : MonoBehaviour
         _textMoneyCount.text = "" + _moneyCount;
 
     }
+    
 }

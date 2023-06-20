@@ -14,4 +14,9 @@ public class MainMenuManager : MonoBehaviour
 
     }
 
+    public void SetCoinsToZero()
+    {
+        PlayerPrefs.SetInt("run_coins", 0);
+    }
+
 }

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Meteorito : MonoBehaviour
 {
-    [SerializeField] private float rotacion = 1.0f;
-    [SerializeField] private float velocidad = 0.08f;
+    public static float rotacion = 1.0f;
+    public static float velocidad = 0.08f;
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private GameObject menuMuerte;
     AudioMenu menu;
@@ -20,10 +20,10 @@ public class Meteorito : MonoBehaviour
   
     void Update()
     {
-
-         transform.Rotate(0,0,rotacion,Space.Self);
-         transform.Translate(0,-velocidad,0,Space.World);
-         
+        //if (!menuPausa.isPausado){
+            transform.Rotate(0,0,rotacion,Space.Self);
+            transform.Translate(0,-velocidad,0,Space.World);
+        //}
 
     }
     void OnTriggerEnter2D(Collider2D other) {
