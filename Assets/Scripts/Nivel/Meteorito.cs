@@ -9,7 +9,7 @@ public class Meteorito : MonoBehaviour
     public static float velocidad = 0.08f;
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private GameObject menuMuerte;
-    AudioMenu menu;
+    private AudioMenu menu;
    
     private void Start()
     {
@@ -32,6 +32,8 @@ public class Meteorito : MonoBehaviour
             audiosource.Play();
             menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
             menu.stopMusic();
+            //var HudManager = GameObject.FindGameObjectWithTag("HudManager");
+            //HudManager.SetActive(false);
             StartCoroutine(Coroutine());
         }
     }

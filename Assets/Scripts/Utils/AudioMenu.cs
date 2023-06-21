@@ -9,7 +9,11 @@ public class AudioMenu : MonoBehaviour
 
     public void stopMusic() {
         audiosource.Stop();
-
-
+    }
+    public void pauseMusic() {
+        audiosource.Pause();
+    }
+    public void playMusic() {
+        audiosource.Play();
     }
 }

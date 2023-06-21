@@ -26,6 +26,7 @@ public class Player : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
+        velocidad = 0.1f;
         countShield = 0;
         //coinSound = GetComponent<>
         spriterenderer = GetComponent<SpriteRenderer>();
