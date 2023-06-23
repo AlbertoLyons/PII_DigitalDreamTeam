@@ -207,7 +207,7 @@ public class Player : MonoBehaviour{
 
                 velocidad = velocidad*0.5f;
                 spriterenderer.color = new Color(0.0f, 0.6f, 0.8f, 1f);
-                Debug.Log("dispro");
+                Debug.Log(velocidad);
 
             }
 
