@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour{
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriterenderer;
+
     public static float velocidad = 0.1f;
     [SerializeField] private int coins = 0;
     //[SerializeField] private int HP = 6;
@@ -21,9 +22,10 @@ public class Player : MonoBehaviour{
     [SerializeField] private AudioClip time;
     [SerializeField] private AudioClip xCoins;
     [SerializeField] private AudioClip Ralentizacion;
+
     [SerializeField] private Shield_UI escudo;
     [SerializeField] private Multiplier_UI multiplicadorUI;
-
+    //[SerializeField] private GameObject particulas;
     // Start is called before the first frame update
     void Start(){
         velocidad = 0.1f;
@@ -34,29 +36,39 @@ public class Player : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
-
+        //particulaMovimiento.transform.Translate(transform.position.x,transform.position.y,0);
         if(this != null){
             //Movimiento a la izquierda
             if (Input.GetKey(KeyCode.LeftArrow)) {
                 spriterenderer.flipX = true;
+                //particulas.SetActive(true);
                 transform.Translate(-velocidad, 0, 0);
                 animator.SetBool("Derecha", true);
             }
             if (Input.GetKeyUp(KeyCode.LeftArrow)) {
                 animator.SetBool("Derecha", false);
+                
             }
             //Movimiento a la derecha
             if (Input.GetKey(KeyCode.RightArrow)) {
                 spriterenderer.flipX = false;
+                //particulas.SetActive(true);
                 transform.Translate(velocidad, 0, 0);
                 animator.SetBool("Derecha", true);
             }
-
             if (Input.GetKeyUp(KeyCode.RightArrow)) {
                 animator.SetBool("Derecha", false);
+                
             }
+            /*
+            if (Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                particulas.SetActive(false);
+            }
+            */
         }
         else{
+            
             Debug.Log("");
         }
         // Guardado de monedas
