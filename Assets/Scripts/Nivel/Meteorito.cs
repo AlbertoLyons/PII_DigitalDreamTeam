@@ -9,6 +9,7 @@ public class Meteorito : MonoBehaviour
     public static float velocidad = 0.08f;
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private GameObject menuMuerte;
+    [SerializeField] private GameObject particulas;
     private AudioMenu menu;
    
     private void Start()
@@ -20,7 +21,9 @@ public class Meteorito : MonoBehaviour
   
     void Update()
     {
+   
         //if (!menuPausa.isPausado){
+            particulas.transform.Translate(0,-velocidad,0,Space.World);
             transform.Rotate(0,0,rotacion,Space.Self);
             transform.Translate(0,-velocidad,0,Space.World);
         //}
