@@ -12,6 +12,7 @@ public class EnemyShooting : MonoBehaviour
     private float timer;
     private GameObject player;
 
+    public float rango_vision;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +26,10 @@ public class EnemyShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+        bool isFlipped = GetComponent<SpriteRenderer>().flipX;
+
         float distanceX = Math.Abs(transform.position.x - player.transform.position.x);
-
         float distanceY = Math.Abs(transform.position.y - player.transform.position.y);
-
-
-
 
         if (distanceX < 9 && distanceY < 1)
         {
@@ -44,12 +43,37 @@ public class EnemyShooting : MonoBehaviour
         {
             animator.SetBool("disparo", false);
         }
+
+        if (distanceX > rango_vision && distanceY < 1)
+        {
+            if (transform.position.x > player.transform.position.x)
+            {
+                if (isFlipped)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            else
+            {
+                if (isFlipped)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+        }
     }
 
     void shoot()
     {
         Instantiate(proyectil, proyectilPos.position, Quaternion.identity);
-        
         animator.SetBool("disparo", true);
     }
 }
