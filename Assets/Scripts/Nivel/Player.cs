@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour{
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriterenderer;
+    
 
     public static float velocidad = 0.1f;
     [SerializeField] private int coins = 0;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour{
         countShield = 0;
         //coinSound = GetComponent<>
         spriterenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -143,6 +145,9 @@ public class Player : MonoBehaviour{
             audiosource.clip = time;
             audiosource.Play();
             Time.timeScale = 0.5f;
+            Meteorito.velocidad = 0.02f;
+            // slowScreen = GameObject.FindGameObjectWithTag("Slowmo");
+            //GameObject.FindGameObjectWithTag("Slowmo").SetActive(true);
             StartCoroutine(slowTime(3));
         }
         if (other.gameObject.CompareTag("BotasMenos")) {
@@ -228,6 +233,9 @@ public class Player : MonoBehaviour{
     {
         yield return new WaitForSeconds(segundos);
         Time.timeScale = 1f;
+        //slowScreen = GameObject.FindGameObjectWithTag("Slowmo");
+        //GameObject.FindGameObjectWithTag("Slowmo").SetActive(false);
+        Meteorito.velocidad = 0.08f;
     }
     IEnumerator coinMultiplier(int segundos, string multiplier)
     {

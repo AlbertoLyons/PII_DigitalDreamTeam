@@ -31,7 +31,7 @@ public class Meteorito : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             audiosource.Play();
             menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
             menu.stopMusic();
