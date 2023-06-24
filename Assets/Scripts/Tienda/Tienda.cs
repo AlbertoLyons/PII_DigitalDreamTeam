@@ -7,5 +7,6 @@ public class Tienda : MonoBehaviour
 {
     public TMP_Text nombre_item;
     public TMP_Text precio;
+    public GameObject[] cantidad;
 
 }

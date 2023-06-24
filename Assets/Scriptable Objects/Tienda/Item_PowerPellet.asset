@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Item_PowerPellet
   m_EditorClassIdentifier: 
   nombre_item: Power Pellet
-  precio: 200
+  precio: 250
