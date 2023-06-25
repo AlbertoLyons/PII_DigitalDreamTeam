@@ -440,8 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533290f4175bd18419c223601e1f8854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proyectil: {fileID: 6937323393577261507, guid: c0b58d52c430a6041bf5511394d17b17, type: 3}
+  proyectil: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
   proyectilPos: {fileID: 2988396571896914943}
+  rango_vision: 0
 --- !u!1 &2105597471492053725
 GameObject:
   m_ObjectHideFlags: 0

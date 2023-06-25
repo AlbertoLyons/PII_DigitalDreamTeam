@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyBullet : MonoBehaviour
 {
@@ -33,6 +34,37 @@ public class EnemyBullet : MonoBehaviour
         if (IsPlayerInFieldOfView())
         {
             // Disparar al jugador
+        }
+
+        bool isFlipped = GetComponent<SpriteRenderer>().flipX;
+
+        float distanceX = Math.Abs(transform.position.x - player.transform.position.x);
+        float distanceY = Math.Abs(transform.position.y - player.transform.position.y);
+
+        if (distanceX > fieldOfViewAngle && distanceY < 1)
+        {
+            if (transform.position.x > player.transform.position.x)
+            {
+                if (isFlipped)
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            else
+            {
+                if (isFlipped)
+                {
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
         }
     }
 
