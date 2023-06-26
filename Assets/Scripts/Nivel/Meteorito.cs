@@ -31,17 +31,20 @@ public class Meteorito : MonoBehaviour
             velocidad = auxVelocidad;
             generadorNivel.SetActive(true);
         } else {generadorNivel.SetActive(false);}
-        //if (!menuPausa.isPausado){
-            particulas.transform.Translate(0,-velocidad,0,Space.World);
-            transform.Rotate(0,0,rotacion,Space.Self);
-            transform.Translate(0,-velocidad,0,Space.World);
-        //}
+        particulas.transform.Translate(0,-velocidad,0,Space.World);
+        transform.Rotate(0,0,rotacion,Space.Self);
+        transform.Translate(0,-velocidad,0,Space.World);
 
     }
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
+            // muerte de jugador
             other.gameObject.SetActive(false);
             audiosource.Play();
+            //guarda monedas de la run al morir y volver a jugar
+            PlayerPrefs.SetInt("run_coins", Player.coins);  
+            PlayerPrefs.SetInt("shop_coins", Manager_Tienda.coins + Player.coins); 
+            Manager_Tienda.coins = PlayerPrefs.GetInt("shop_coins");
             
             menu.stopMusic();
             //var HudManager = GameObject.FindGameObjectWithTag("HudManager");
@@ -58,8 +61,6 @@ public class Meteorito : MonoBehaviour
         menuMuerte.SetActive(true);
         Time.timeScale = 0f;
         velocidad = 0f;
-        rotacion = 0f;
-        //ChangeScene("Menu");
-        
+        rotacion = 0f;        
     }
 }

@@ -783,7 +783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &450503106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -793,7 +793,7 @@ RectTransform:
   m_GameObject: {fileID: 450503105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.2891, y: 3.2891, z: 3.2891}
+  m_LocalScale: {x: 0.26199055, y: 0.26199055, z: 0.26199055}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 927183270}
@@ -802,8 +802,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -784.80756, y: 322}
-  m_SizeDelta: {x: 90.4742, y: 33.8913}
+  m_AnchoredPosition: {x: 958.95, y: 534.98}
+  m_SizeDelta: {x: 13.9841, y: 13.8768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450503107
 MonoBehaviour:
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -912,12 +912,12 @@ GameObject:
   - component: {fileID: 454682978}
   - component: {fileID: 454682977}
   m_Layer: 5
-  m_Name: Coin_Generator
+  m_Name: Infinite Meat Glitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &454682976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -927,7 +927,7 @@ RectTransform:
   m_GameObject: {fileID: 454682975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.79674, y: 0.79674, z: 0.79674}
+  m_LocalScale: {x: 0.30374917, y: 0.30374917, z: 0.30374917}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1186963120}
@@ -936,8 +936,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 445, y: 462.5077}
-  m_SizeDelta: {x: 258.0167, y: 54.9847}
+  m_AnchoredPosition: {x: 958.97, y: 538.74}
+  m_SizeDelta: {x: 12.3019, y: 12.3607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &454682977
 MonoBehaviour:
@@ -960,11 +960,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.8490566, g: 0.3254574, b: 0.03604484, a: 0}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -985,7 +985,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1354601417}
         m_TargetAssemblyTypeName: Manager_Tienda, Assembly-CSharp
-        m_MethodName: AddCoins
+        m_MethodName: MeatGenerator
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1620,7 +1620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &927183270
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2541,7 +2541,7 @@ GameObject:
   - component: {fileID: 1186963122}
   - component: {fileID: 1186963121}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: (Solo Para Demo)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2587,7 +2587,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: meat++
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2788,7 +2788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a773fe2fc50b44ba600384951b437a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coins: 0
   coinUI: {fileID: 1613952726}
   itemsTiendaSO:
   - {fileID: 11400000, guid: 50d4199bd81782e40af2af2a614d01a5, type: 2}
@@ -3184,7 +3183,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -71.46144, w: 0}
+  m_margin: {x: 0, y: 0, z: -105.19375, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

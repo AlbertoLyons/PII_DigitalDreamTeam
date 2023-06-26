@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,9 @@ public class Player : MonoBehaviour{
     [SerializeField] private SpriteRenderer spriterenderer;
     
 
-    public static float velocidad = 0.1f;
-    [SerializeField] private int coins = 0;
+    [SerializeField] public static float velocidad;
+    [SerializeField] public static int coins = 0;
+    [SerializeField] private bool isBotasMas;
     //[SerializeField] private int HP = 6;
     [SerializeField] private int countShield = 0;
     [SerializeField] private int multiplicador = 1;
@@ -27,17 +29,23 @@ public class Player : MonoBehaviour{
     [SerializeField] private Shield_UI escudo;
     [SerializeField] private Multiplier_UI multiplicadorUI;
     //[SerializeField] private GameObject particulas;
+
+
     // Start is called before the first frame update
     void Start(){
-        velocidad = 0.1f;
+        velocidad = VelocidadDeMovimiento();
         countShield = 0;
         //coinSound = GetComponent<>
         spriterenderer = GetComponent<SpriteRenderer>();
+        coins = 0;
         
     }
 
     // Update is called once per frame
     void Update(){
+        // Guardado de monedas
+        PlayerPrefs.SetInt("run_coins", coins);
+
         //particulaMovimiento.transform.Translate(transform.position.x,transform.position.y,0);
         if(this != null){
             //Movimiento a la izquierda
@@ -69,29 +77,8 @@ public class Player : MonoBehaviour{
             }
             */
         }
-        else{
-            
-            Debug.Log("");
-        }
-        // Guardado de monedas
-        PlayerPrefs.SetInt("run_coins", coins);
-
+        else{ Debug.Log(""); }
     }
-
-    /**void OnCollisionStay2D(Collision2D other) {
-
-        if (other.gameObject.CompareTag("Pasto")){
-            velocidad = 0.01f;
-        }
-
-        if (other.gameObject.CompareTag("Petroleo")){
-            velocidad = 0.001f;
-        }
-
-        if(other.gameObject.CompareTag("Hielo")){
-            velocidad = 0.02f;
-        }
-    }**/
     
     void OnTriggerEnter2D(Collider2D other) {
         
@@ -136,7 +123,8 @@ public class Player : MonoBehaviour{
 
             audiosource.clip = fastBoots;
             audiosource.Play();
-            velocidad = 0.15f;
+            isBotasMas = true;
+            velocidad = VelocidadConBotas();
             StartCoroutine(Botas(4));
         }
         if (other.gameObject.CompareTag("Reloj")) {
@@ -159,6 +147,7 @@ public class Player : MonoBehaviour{
             StartCoroutine(Botas(4));
         }
         if (other.gameObject.CompareTag("Enemy")) {
+            
             if (Input.GetKey(KeyCode.UpArrow)){
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
@@ -209,25 +198,22 @@ public class Player : MonoBehaviour{
             }
 
             else{
-
                 velocidad = velocidad*0.5f;
                 spriterenderer.color = new Color(0.0f, 0.6f, 0.8f, 1f);
                 Debug.Log(velocidad);
-
             }
-
-
         }
     }
-    void OnTriggerExit2D(Collider2D other){
-
+    void OnTriggerExit2D(Collider2D other)
+    {
         spriterenderer.color = new Color (1, 1, 1, 1); 
         velocidad = 0.1f;
     }
     IEnumerator Botas(int segundos)
     {
         yield return new WaitForSeconds(segundos);
-        velocidad = 0.1f;
+        isBotasMas = false;
+        velocidad = VelocidadConBotas();
     }
     IEnumerator slowTime(int segundos)
     {
@@ -243,6 +229,36 @@ public class Player : MonoBehaviour{
         multiplicadorUI.hideMultiplier();
         multiplicador = 1;
     }
+public float VelocidadDeMovimiento()
+{
+    //velocidad base para el jugador
+    velocidad = 0.1f;
 
-    
+    //si no tiene la compra de mejora 
+    if (PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]) == 0) { return velocidad; }
+    //si tiene la compra de mejora 
+    else if (PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]) > 0)
+    {
+        double velocidadDouble = velocidad * Math.Pow(1.07, PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]));
+        velocidad = (float)velocidadDouble;
+        return velocidad;
+    }
+    return velocidad;
+}    
+public float VelocidadConBotas()
+{
+    if (isBotasMas)
+    {
+        float velocidadConBotasMas = VelocidadDeMovimiento() * 1.6f;
+        Debug.Log("LLEGA A LAS CON BOTAS MAS");
+        return velocidadConBotasMas;
+    }    
+    else if(!isBotasMas)
+    {
+        float velocidadSinBotasMas = VelocidadDeMovimiento() / 1.6f;
+        Debug.Log("LLEGA A LAS SIN BOTAS MAS");
+        return velocidadSinBotasMas;
+    }
+    return velocidad;
+}    
 }
