@@ -6,22 +6,31 @@ using UnityEngine.SceneManagement;
 public class Meteorito : MonoBehaviour
 {
     public static float rotacion = 1.0f;
-    public static float velocidad = 0.08f;
-    [SerializeField] private AudioSource audiosource;
-    [SerializeField] private GameObject menuMuerte;
-    [SerializeField] private GameObject particulas;
+    public static float velocidad = 0.075f;
+    public AudioSource audiosource;
+    public GameObject menuMuerte;
+    public GameObject particulas;
     private AudioMenu menu;
+    private float auxVelocidad = velocidad;
+    public GameObject player;
+    public GameObject generadorNivel;
    
     private void Start()
     {
+        menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
         rotacion = 1.0f;
         velocidad = 0.08f;
         Time.timeScale = 1f;
+        velocidad = 0;
+        
     }
   
     void Update()
     {
-   
+        if (player.transform.position.y < 0.11f && player.activeSelf) {
+            velocidad = auxVelocidad;
+            generadorNivel.SetActive(true);
+        } else {generadorNivel.SetActive(false);}
         //if (!menuPausa.isPausado){
             particulas.transform.Translate(0,-velocidad,0,Space.World);
             transform.Rotate(0,0,rotacion,Space.Self);
@@ -33,7 +42,7 @@ public class Meteorito : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) {
             other.gameObject.SetActive(false);
             audiosource.Play();
-            menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
+            
             menu.stopMusic();
             //var HudManager = GameObject.FindGameObjectWithTag("HudManager");
             //HudManager.SetActive(false);

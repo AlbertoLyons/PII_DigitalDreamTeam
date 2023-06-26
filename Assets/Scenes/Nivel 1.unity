@@ -1445,6 +1445,8 @@ MonoBehaviour:
   audiosource: {fileID: 298500683}
   menuMuerte: {fileID: 1865209313}
   particulas: {fileID: 2135961177}
+  player: {fileID: 551013799}
+  generadorNivel: {fileID: 1176462913}
 --- !u!82 &298500683
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1975,6 +1977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proyectil: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
   proyectilPos: {fileID: 2096947978}
+  rango_vision: 0
 --- !u!114 &453948445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2347,7 +2350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551013799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.83, y: 0.56200004, z: 0}
+  m_LocalPosition: {x: -16.83, y: 0.4377939, z: 0}
   m_LocalScale: {x: 4.1378, y: 4.1378, z: 4.1378}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4550,7 +4553,7 @@ MonoBehaviour:
   distanciaMinima: 0.4
   puntoFinal: {fileID: 1698703840}
   cantidadInicial: 5
-  delay: 15
+  delay: 20
 --- !u!4 &1176462915
 Transform:
   m_ObjectHideFlags: 0
