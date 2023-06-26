@@ -21,6 +21,7 @@ TagManager:
   - CoinsX3
   - Wall
   - Slowmo
+  - PowerPellet
   layers:
   - Default
   - TransparentFX
