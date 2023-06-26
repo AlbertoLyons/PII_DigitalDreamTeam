@@ -7,9 +7,10 @@ public class hudManager : MonoBehaviour
 {
     public static bool isPausado;
     public GameObject menuPausa;
-    [SerializeField] private TextMeshProUGUI _textMoneyCount; //serializefield hace que el valor privado se vea en el unity
-    [SerializeField] private int _moneyCount;
-    public float auxVelocidad;
+    public TextMeshProUGUI _textMoneyCount; //serializefield hace que el valor privado se vea en el unity
+    public int _moneyCount;
+    private float auxVelocidad;
+    private float auxMeteorito;
     void Start()
     {
         menuPausa.SetActive(false);
@@ -40,9 +41,9 @@ public class hudManager : MonoBehaviour
         if (Player.velocidad == 0.05f) {
             auxVelocidad = 0.05f;
         } else {auxVelocidad = 0.1f;}
+        Meteorito meteorScript = GameObject.FindGameObjectWithTag("Meteorito").GetComponent<Meteorito>();
+        meteorScript.enabled = false;
         Player.velocidad = 0f;
-        Meteorito.rotacion = 0f;
-        Meteorito.velocidad = 0f;
         Player playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerScript.enabled = false;
         //Animator playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
@@ -58,8 +59,8 @@ public class hudManager : MonoBehaviour
             Time.timeScale = 1f;
             isPausado = false;
             Player.velocidad = auxVelocidad;
-            Meteorito.rotacion = 1.0f;
-            Meteorito.velocidad = 0.08f;
+            Meteorito meteorScript = GameObject.FindGameObjectWithTag("Meteorito").GetComponent<Meteorito>();
+            meteorScript.enabled = true;
             Player playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             playerScript.enabled = true;
             menu.playMusic();
