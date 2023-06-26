@@ -19,7 +19,7 @@ public class Meteorito : MonoBehaviour
     {
         menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
         rotacion = 1.0f;
-        velocidad = 0.08f;
+        auxVelocidad = 0.075f;
         Time.timeScale = 1f;
         velocidad = 0;
         
