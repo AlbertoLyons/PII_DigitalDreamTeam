@@ -8,8 +8,12 @@ public class Multiplier_UI : MonoBehaviour
     [SerializeField] private Image multiplier;
     [SerializeField] private Sprite multiplier2;
     [SerializeField] private Sprite multiplier3;
+    [SerializeField] private AudioSource audiosource;
+    [SerializeField] private AudioClip xCoins;
 
     public void showMultiplier(string num) {
+        audiosource.clip = xCoins;
+        audiosource.Play();
 
         if (num == "X2") {
             multiplier.enabled = true;

@@ -9,27 +9,25 @@ public class Player : MonoBehaviour{
     
     [SerializeField] public static float velocidad;
     [SerializeField] public static int coins = 0;
+    [SerializeField] private GameObject particulasMuerteEnemigo;
+    [SerializeField] private GameObject slowScreen;
+
+    //[SerializeField] private int HP = 6;
+    [SerializeField] public static int countShield = 0;
+    [SerializeField] private int multiplicador = 1;
     [SerializeField] private bool isBotasMas;
     [SerializeField] private bool isBotasMenos;
     [SerializeField] private bool isRalentizado = false;
     [SerializeField] private bool isPowerPellet;
-    [SerializeField] private GameObject particulasMuerteEnemigo;
 
-    //[SerializeField] private int HP = 6;
-    [SerializeField] private int countShield = 0;
-    [SerializeField] private int multiplicador = 1;
-    
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private AudioClip coinSound;
     [SerializeField] private AudioClip dodgeSound;
     [SerializeField] private AudioClip damageSound;
-    [SerializeField] private AudioClip shieldSound;
     [SerializeField] private AudioClip fastBoots;
     [SerializeField] private AudioClip slowBoots;
     [SerializeField] private AudioClip time;
-    [SerializeField] private AudioClip xCoins;
     [SerializeField] private AudioClip Ralentizacion;
-    [SerializeField] private AudioClip powerPellet;
     [SerializeField] private AudioClip enemyDeath;
 
     [SerializeField] private Shield_UI escudo;
@@ -101,40 +99,32 @@ public class Player : MonoBehaviour{
         if (other.gameObject.CompareTag("Escudo")) 
         {
             other.gameObject.SetActive(false);
-
-            countShield = 3;
-            audiosource.clip = shieldSound;
-            audiosource.Play();
+            countShield = 3 + PlayerPrefs.GetInt(Manager_Tienda.keyCompras[1]);
             escudo.shieldColor(true);
         }
-        if (other.gameObject.CompareTag("PowerPellet")) {
-            Destroy(other.gameObject);
-            audiosource.clip = powerPellet;
-            audiosource.Play();
+        if (other.gameObject.CompareTag("PowerPellet")) 
+        {
+            other.gameObject.SetActive(false);
             isPowerPellet = true;
             powerPelletUI.PowerColor(isPowerPellet);
-            StartCoroutine(PowerPellet(4));
+            StartCoroutine(PowerPellet(4 + 2 * PlayerPrefs.GetInt(Manager_Tienda.keyCompras[3])));
         }
         //////////////////////////////////////////////////
         if (other.gameObject.CompareTag("CoinsX2")) 
         {
             other.gameObject.SetActive(false);
 
-            audiosource.clip = xCoins;
-            audiosource.Play();
             multiplicador = 2;
             multiplicadorUI.showMultiplier("X2");
-            StartCoroutine(coinMultiplier(4, "X2"));
+            StartCoroutine(coinMultiplier(4 + 5 * PlayerPrefs.GetInt(Manager_Tienda.keyCompras[4]), "X2"));
         }
         if (other.gameObject.CompareTag("CoinsX3")) 
         {
             other.gameObject.SetActive(false);
 
-            audiosource.clip = xCoins;
-            audiosource.Play();
             multiplicador = 3;
             multiplicadorUI.showMultiplier("X3");
-            StartCoroutine(coinMultiplier(4, "X3"));
+            StartCoroutine(coinMultiplier(4  + 5 * PlayerPrefs.GetInt(Manager_Tienda.keyCompras[5]), "X3"));
         }
         ////////////////////////////////////////////////////
         if (other.gameObject.CompareTag("BotasMas")) 
@@ -155,9 +145,8 @@ public class Player : MonoBehaviour{
             audiosource.Play();
             Time.timeScale = 0.5f;
             Meteorito.velocidad = 0.02f;
-            // slowScreen = GameObject.FindGameObjectWithTag("Slowmo");
-            //GameObject.FindGameObjectWithTag("Slowmo").SetActive(true);
-            StartCoroutine(slowTime(3));
+            slowScreen.SetActive(true);
+            StartCoroutine(slowTime(2 + PlayerPrefs.GetInt(Manager_Tienda.keyCompras[2])));
         }
         if (other.gameObject.CompareTag("BotasMenos")) 
         {
@@ -179,8 +168,6 @@ public class Player : MonoBehaviour{
                 particulasMuerteEnemigo.SetActive(true);
                 StartCoroutine(EnemyParticleDeath(1));
             }
-
-
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 audiosource.clip = dodgeSound;
@@ -194,25 +181,13 @@ public class Player : MonoBehaviour{
                 if (countShield == 0) 
                 {
                     audiosource.pitch = 2f;
-                    audiosource.clip = shieldSound;
-                    audiosource.Play();
                     audiosource.pitch = 1f;
                     escudo.shieldColor(false);
                 }
             }
-            // danio recibido por alien al jugador 
-            // else{
-            
-            //     audiosource.clip = damageSound;
-            //     audiosource.Play();
-            //     //velocidad = velocidad*0.01f;
-            //     spriterenderer.color = new Color (1, 0, 0, 1); 
-
-            // }
         }
         if (other.gameObject.CompareTag("Disparo")) {
             Destroy(other.gameObject);
-            
             if (Input.GetKey(KeyCode.UpArrow)){
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
@@ -223,8 +198,6 @@ public class Player : MonoBehaviour{
                 audiosource.Play();
                 if (countShield == 0) {
                     audiosource.pitch = 2f;
-                    audiosource.clip = shieldSound;
-                    audiosource.Play();
                     audiosource.pitch = 1f;
                     escudo.shieldColor(false);
                 }
@@ -260,8 +233,7 @@ public class Player : MonoBehaviour{
     {
         yield return new WaitForSeconds(segundos);
         Time.timeScale = 1f;
-        //slowScreen = GameObject.FindGameObjectWithTag("Slowmo");
-        //GameObject.FindGameObjectWithTag("Slowmo").SetActive(false);
+        slowScreen.SetActive(false);
         Meteorito.velocidad = 0.075f;
     }
     IEnumerator coinMultiplier(int segundos, string multiplier)
