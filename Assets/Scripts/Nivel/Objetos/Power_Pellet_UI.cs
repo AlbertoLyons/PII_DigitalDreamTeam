@@ -17,7 +17,7 @@ public class Power_Pellet_UI : MonoBehaviour
         if (powerStatus) {
             audiosource.clip = powerPellet;
             audiosource.Play();
-            PowerPellet.color = new Color(0, 255, 255, 255);
+            PowerPellet.color = new Color(255, 255, 255, 255);
             
         }   
         if (!powerStatus) {

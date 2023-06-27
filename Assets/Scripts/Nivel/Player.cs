@@ -10,6 +10,9 @@ public class Player : MonoBehaviour{
     [SerializeField] public static float velocidad;
     [SerializeField] public static int coins = 0;
     [SerializeField] private GameObject particulasMuerteEnemigo;
+    [SerializeField] private ParticleSystem particulasDisparo;
+    [SerializeField] private ParticleSystem particulasDisparo2;
+    [SerializeField] private ParticleSystem particulasDodge;
     [SerializeField] private GameObject slowScreen;
 
     //[SerializeField] private int HP = 6;
@@ -170,12 +173,14 @@ public class Player : MonoBehaviour{
             }
             if (Input.GetKey(KeyCode.UpArrow))
             {
+                particulasDodge.Play();
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
             }
             else if (countShield > 0) 
             {
                 countShield--;
+                particulasDodge.Play();
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
                 if (countShield == 0) 
@@ -189,11 +194,13 @@ public class Player : MonoBehaviour{
         if (other.gameObject.CompareTag("Disparo")) {
             Destroy(other.gameObject);
             if (Input.GetKey(KeyCode.UpArrow)){
+                particulasDodge.Play();
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
             }
             else if (countShield > 0) {
                 countShield--;
+                particulasDodge.Play();
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
                 if (countShield == 0) {
@@ -205,11 +212,16 @@ public class Player : MonoBehaviour{
             else{
                 if (!isRalentizado)
                 {
+                    particulasDisparo.Play();
                     audiosource.clip = Ralentizacion;
                     audiosource.Play();
                     velocidad = VelocidadDeMovimiento() * 0.5f;
                     spriterenderer.color = new Color(0.0f, 0.6f, 0.8f, 1f);
                     StartCoroutine(VelocidadConRalentizacion(1.5f));
+                }
+                else if (isRalentizado)
+                {
+                    particulasDisparo2.Play();
                 }
             }
         }
