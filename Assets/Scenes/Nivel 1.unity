@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 155328224}
   - component: {fileID: 155328223}
   - component: {fileID: 155328225}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Plataforma
   m_TagString: Pasto
   m_Icon: {fileID: 0}
@@ -1416,7 +1416,7 @@ GameObject:
   - component: {fileID: 298443513}
   - component: {fileID: 298443512}
   - component: {fileID: 298443515}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: LLuviaDeMonedas
   m_TagString: coin
   m_Icon: {fileID: 0}
@@ -5074,10 +5074,10 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
@@ -5192,7 +5192,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5247,11 +5247,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 1
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -6210,7 +6210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298443511}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.6321993, y: 7.693394, z: 14.1378}
+  m_LocalPosition: {x: -3.26, y: 7.693394, z: 14.1378}
   m_LocalScale: {x: 0.8014831, y: 0.8014838, z: 0.80148375}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6776,7 +6776,6 @@ GameObject:
   - component: {fileID: 453948443}
   - component: {fileID: 453948444}
   - component: {fileID: 453948445}
-  - component: {fileID: 453948446}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Enemy
@@ -6916,21 +6915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectToPool: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
-  poolSize: 3
-  poolCanExpand: 0
---- !u!114 &453948446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453948439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15f9e0e060a9a7646ba70012d6a96eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectToPool: {fileID: 6937323393577261507, guid: c0b58d52c430a6041bf5511394d17b17, type: 3}
   poolSize: 3
   poolCanExpand: 0
 --- !u!1 &481650964

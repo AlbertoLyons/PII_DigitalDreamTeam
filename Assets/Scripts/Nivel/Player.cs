@@ -88,6 +88,16 @@ public class Player : MonoBehaviour{
         else{ Debug.Log(""); }
     }
     
+    void OnParticleCollision(GameObject other)
+    {
+        if(other.gameObject.CompareTag("coin"))
+        {
+            hudManager.Instance.AddMoney(1);
+            Debug.Log("Se agregó una moneda");
+        }
+
+    }
+
     void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.gameObject.CompareTag("coin")) 

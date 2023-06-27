@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class hudManager : MonoBehaviour
+public class hudManager : GenericSingleton<hudManager>
 {
     public static bool isPausado;
     public GameObject menuPausa;
@@ -11,6 +11,8 @@ public class hudManager : MonoBehaviour
     public int _moneyCount;
     private float auxVelocidad;
     private float auxMeteorito;
+
+
     void Start()
     {
         menuPausa.SetActive(false);
@@ -49,6 +51,8 @@ public class hudManager : MonoBehaviour
         //Animator playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         //playerAnimator.enabled = false;
         menu.pauseMusic();
+
+        //var randomNumber = Random.Range(1,99);
         
     }
 
