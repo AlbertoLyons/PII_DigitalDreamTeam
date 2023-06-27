@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 8939173090914492590}
   - component: {fileID: 8939173090914492591}
   - component: {fileID: 8939173090914492588}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Plataformas
   m_TagString: Pasto
   m_Icon: {fileID: 0}

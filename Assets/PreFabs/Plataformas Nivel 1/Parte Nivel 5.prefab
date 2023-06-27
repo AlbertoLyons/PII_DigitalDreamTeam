@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proyectil: {fileID: 6937323393577261507, guid: a93bdb8601ae9fc40b28721f45667c54, type: 3}
   proyectilPos: {fileID: 6266808389411557456}
+  rango_vision: 0
 --- !u!1 &3199633404965172732
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +820,7 @@ GameObject:
   - component: {fileID: 8939173090914492590}
   - component: {fileID: 8939173090914492591}
   - component: {fileID: 8939173090914492588}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Plataformas
   m_TagString: Pasto
   m_Icon: {fileID: 0}
