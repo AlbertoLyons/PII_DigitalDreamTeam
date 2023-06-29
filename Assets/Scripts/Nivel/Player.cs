@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random=UnityEngine.Random;
 
 public class Player : MonoBehaviour{
     [SerializeField] private Animator animator;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private ParticleSystem particulasDisparo;
     [SerializeField] private ParticleSystem particulasDisparo2;
     [SerializeField] private ParticleSystem particulasDodge;
+    [SerializeField] private ParticleSystem lluviaMonedas;
     [SerializeField] private GameObject slowScreen;
     public static Rigidbody2D rb;
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private AudioClip time;
     [SerializeField] private AudioClip Ralentizacion;
     [SerializeField] private AudioClip enemyDeath;
+    [SerializeField] private AudioClip lluviaSonido;
 
     [SerializeField] private Shield_UI escudo;
     [SerializeField] private Power_Pellet_UI powerPelletUI;
@@ -102,21 +105,27 @@ public class Player : MonoBehaviour{
         }
         else{ Debug.Log(""); }
     }
-    
+
     void OnParticleCollision(GameObject other)
     {
+
         if(other.gameObject.CompareTag("coin"))
         {
-            hudManager.Instance.AddMoney(1);
-            Debug.Log("Se agregó una moneda");
+            coins = coins + 1*multiplicador;
+            var HudManager = FindObjectOfType<hudManager>();
+            HudManager.AddMoney(coins);
+            coinUI.RecogeMoneda();
         }
 
     }
+    
 
     void OnTriggerEnter2D(Collider2D other) 
     {
+    
         if (other.gameObject.CompareTag("coin")) 
         {
+            var randomNumber = Random.Range(1,30);
             other.gameObject.SetActive(false);
             // audiosource.clip = coinSound;
             // audiosource.Play();
@@ -124,6 +133,12 @@ public class Player : MonoBehaviour{
             var HudManager = FindObjectOfType<hudManager>();
             HudManager.AddMoney(coins);
             coinUI.RecogeMoneda();
+            if(randomNumber == 10){
+                lluviaMonedas.Play();
+                audiosource.clip = lluviaSonido;
+                audiosource.Play();
+                StartCoroutine(LluviaMonedas(5));
+            }
         }
         if (other.gameObject.CompareTag("Escudo")) 
         {
@@ -314,6 +329,11 @@ public class Player : MonoBehaviour{
     {
         yield return new WaitForSeconds(segundos);
         particulasMuerteEnemigo.SetActive(false);
+    }
+    IEnumerator LluviaMonedas(int segundos)
+    {
+        yield return new WaitForSeconds(segundos);
+        lluviaMonedas.Stop();
     }
     void PerformParry()
     {
