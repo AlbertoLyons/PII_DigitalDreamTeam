@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Meteorito : MonoBehaviour
 {
     public static float rotacion = 1.0f;
-    public static float velocidad = 0.075f;
+    public static float velocidad = 0.07f;
     public AudioSource audiosource;
     public GameObject menuMuerte;
     public GameObject particulas;
@@ -19,7 +19,7 @@ public class Meteorito : MonoBehaviour
     {
         menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
         rotacion = 1.0f;
-        auxVelocidad = 0.075f;
+        auxVelocidad = 0.07f;
         Time.timeScale = 1f;
         velocidad = 0;
         

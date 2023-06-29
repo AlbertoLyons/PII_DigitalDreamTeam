@@ -9,11 +9,14 @@ public class Player : MonoBehaviour{
     
     [SerializeField] public static float velocidad;
     [SerializeField] public static int coins = 0;
+    [SerializeField] private float parryCooldown = 1f;
+    private bool canParry = true; 
     [SerializeField] private GameObject particulasMuerteEnemigo;
     [SerializeField] private ParticleSystem particulasDisparo;
     [SerializeField] private ParticleSystem particulasDisparo2;
     [SerializeField] private ParticleSystem particulasDodge;
     [SerializeField] private GameObject slowScreen;
+    public static Rigidbody2D rb;
 
     //[SerializeField] private int HP = 6;
     [SerializeField] public static int countShield = 0;
@@ -42,6 +45,7 @@ public class Player : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
+        rb = GetComponent<Rigidbody2D>();
         velocidad = VelocidadDeMovimiento();
         countShield = 0;
         //coinSound = GetComponent<>
@@ -68,6 +72,7 @@ public class Player : MonoBehaviour{
                 animator.SetBool("Derecha", false);
                 
             }
+            
             //Movimiento a la derecha
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
                 spriterenderer.flipX = false;
@@ -79,6 +84,15 @@ public class Player : MonoBehaviour{
                 animator.SetBool("Derecha", false);
                 
             }
+            //Condiciones del parry
+            if (Input.GetKey(KeyCode.UpArrow) && canParry || Input.GetKey(KeyCode.Space) && canParry) {
+                spriterenderer.color = Color.green;
+                
+            }
+            if (Input.GetKeyUp(KeyCode.UpArrow) && canParry || Input.GetKeyUp(KeyCode.Space) && canParry) {
+                spriterenderer.color = new Color(225,250,223,255);
+            }
+
             /*
             if (Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKeyUp(KeyCode.LeftArrow))
             {
@@ -159,7 +173,8 @@ public class Player : MonoBehaviour{
             audiosource.clip = time;
             audiosource.Play();
             Time.timeScale = 0.5f;
-            Meteorito.velocidad = 0.02f;
+            rb.gravityScale = 3f;
+            Meteorito.velocidad = Meteorito.velocidad*0.5f;
             slowScreen.SetActive(true);
             StartCoroutine(slowTime(2 + PlayerPrefs.GetInt(Manager_Tienda.keyCompras[2])));
         }
@@ -182,12 +197,18 @@ public class Player : MonoBehaviour{
                 particulasMuerteEnemigo.SetActive(true);
                 StartCoroutine(EnemyParticleDeath(1));
             }
+            if (Input.GetKey(KeyCode.UpArrow) && canParry || Input.GetKey(KeyCode.Space) && canParry)
+            {   
+                PerformParry();
+            }
+            /*
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
             {
                 particulasDodge.Play();
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
             }
+            */
             else if (countShield > 0) 
             {
                 countShield--;
@@ -204,11 +225,17 @@ public class Player : MonoBehaviour{
         }
         if (other.gameObject.CompareTag("Disparo")) {
             Destroy(other.gameObject);
+            if (Input.GetKey(KeyCode.UpArrow) && canParry || Input.GetKey(KeyCode.Space) && canParry)
+            {   
+                PerformParry();
+            }
+            /*
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)){
                 particulasDodge.Play();
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
             }
+            */
             else if (countShield > 0) {
                 countShield--;
                 particulasDodge.Play();
@@ -257,7 +284,8 @@ public class Player : MonoBehaviour{
         yield return new WaitForSeconds(segundos);
         Time.timeScale = 1f;
         slowScreen.SetActive(false);
-        Meteorito.velocidad = 0.075f;
+        Meteorito.velocidad = 0.07f;
+        rb.gravityScale = 1.9f;
     }
     IEnumerator coinMultiplier(int segundos, string multiplier)
     {
@@ -287,47 +315,60 @@ public class Player : MonoBehaviour{
         yield return new WaitForSeconds(segundos);
         particulasMuerteEnemigo.SetActive(false);
     }
-public float VelocidadDeMovimiento()
-{
-    //velocidad base para el jugador
-    velocidad = 0.1f;
-    //si no tiene la compra de mejora 
-    if (PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]) == 0) { return velocidad; }
-    //si tiene la compra de mejora 
-    else if (PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]) > 0)
+    void PerformParry()
     {
-        double velocidadDouble = velocidad * Math.Pow(1.07, PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]));
-        velocidad = (float)velocidadDouble;
+        particulasDodge.Play();
+        audiosource.clip = dodgeSound;
+        audiosource.Play();
+        canParry = false;
+        spriterenderer.color = new Color(225,250,223,255);
+        Invoke("ResetParry", parryCooldown);
+
+    }
+    void ResetParry() {
+        canParry = true;
+    }
+    public float VelocidadDeMovimiento()
+    {
+        //velocidad base para el jugador
+        velocidad = 0.1f;
+        //si no tiene la compra de mejora 
+        if (PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]) == 0) { return velocidad; }
+        //si tiene la compra de mejora 
+        else if (PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]) > 0)
+        {
+            double velocidadDouble = velocidad * Math.Pow(1.07, PlayerPrefs.GetInt(Manager_Tienda.keyCompras[0]));
+            velocidad = (float)velocidadDouble;
+            return velocidad;
+        }
         return velocidad;
-    }
-    return velocidad;
-}    
-public float VelocidadConBotasMas()
-{
-    if (isBotasMas)
-    {
-        float velocidadConBotasMas = VelocidadDeMovimiento() * 1.6f;
-        return velocidadConBotasMas;
     }    
-    else if(!isBotasMas)
-    {   
-        float velocidadSinBotasMas = VelocidadDeMovimiento();
-        return velocidadSinBotasMas;
-    }
-    return VelocidadDeMovimiento();
-}    
-public float VelocidadConBotasMenos()
-{
-    if (isBotasMenos)
+    public float VelocidadConBotasMas()
     {
-        float velocidadConBotasMenos = VelocidadDeMovimiento() * 0.5f;
-        return velocidadConBotasMenos;
+        if (isBotasMas)
+        {
+            float velocidadConBotasMas = VelocidadDeMovimiento() * 1.6f;
+            return velocidadConBotasMas;
+        }    
+        else if(!isBotasMas)
+        {   
+            float velocidadSinBotasMas = VelocidadDeMovimiento();
+            return velocidadSinBotasMas;
+        }
+        return VelocidadDeMovimiento();
     }    
-    else if(!isBotasMenos)
+    public float VelocidadConBotasMenos()
     {
-        float velocidadSinBotasMenos = VelocidadDeMovimiento();
-        return velocidadSinBotasMenos;
+        if (isBotasMenos)
+        {
+            float velocidadConBotasMenos = VelocidadDeMovimiento() * 0.5f;
+            return velocidadConBotasMenos;
+        }    
+        else if(!isBotasMenos)
+        {
+            float velocidadSinBotasMenos = VelocidadDeMovimiento();
+            return velocidadSinBotasMenos;
+        }
+        return VelocidadDeMovimiento(); 
     }
-    return VelocidadDeMovimiento(); 
-}
 }

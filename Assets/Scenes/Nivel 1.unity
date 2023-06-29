@@ -7041,7 +7041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &495997438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7285,6 +7285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 551013800}
   spriterenderer: {fileID: 551013801}
+  parryCooldown: 1.5
   particulasMuerteEnemigo: {fileID: 1556842689}
   particulasDisparo: {fileID: 1272230019}
   particulasDisparo2: {fileID: 1132234401}

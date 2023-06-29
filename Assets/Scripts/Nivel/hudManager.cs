@@ -11,6 +11,9 @@ public class hudManager : GenericSingleton<hudManager>
     public int _moneyCount;
     private float auxVelocidad;
     private float auxMeteorito;
+    private float rbAux;
+    private float auxMeteoritoVelocidad;
+    private float auxTime;
 
 
     void Start()
@@ -38,11 +41,22 @@ public class hudManager : GenericSingleton<hudManager>
     {
         AudioMenu menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
         menuPausa.SetActive(true);
+        if (Time.timeScale == 0.5f) {
+            auxTime = 0.5f;
+            auxVelocidad = Player.velocidad;
+            auxMeteoritoVelocidad = Meteorito.velocidad;
+            rbAux = 3f;
+        } else {
+            auxTime = 1f;
+            rbAux = 1.9f;
+            auxVelocidad = 0.1f;
+        }
         Time.timeScale = 0f;
         isPausado = true;
-        if (Player.velocidad == 0.05f) {
-            auxVelocidad = 0.05f;
+        if (Player.velocidad != 0.107f) {
+            auxVelocidad = Player.velocidad;
         } else {auxVelocidad = 0.1f;}
+        
         Meteorito meteorScript = GameObject.FindGameObjectWithTag("Meteorito").GetComponent<Meteorito>();
         meteorScript.enabled = false;
         Player.velocidad = 0f;
@@ -60,17 +74,16 @@ public class hudManager : GenericSingleton<hudManager>
         {
             AudioMenu menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
             menuPausa.SetActive(false);
-            Time.timeScale = 1f;
+            Time.timeScale = auxTime;
             isPausado = false;
             Player.velocidad = auxVelocidad;
+            Player.rb.gravityScale = rbAux;
             Meteorito meteorScript = GameObject.FindGameObjectWithTag("Meteorito").GetComponent<Meteorito>();
             meteorScript.enabled = true;
             Player playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             playerScript.enabled = true;
             menu.playMusic();
         }
-
-
     public void AddMoney(int value)
     {
 
