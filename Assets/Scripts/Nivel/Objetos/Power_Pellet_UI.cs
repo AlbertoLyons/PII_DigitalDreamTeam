@@ -8,6 +8,7 @@ public class Power_Pellet_UI : MonoBehaviour
     [SerializeField] private Image PowerPellet;
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private AudioClip powerPellet;
+    [SerializeField] private AudioClip enemyDeath;
     void Start()
     {
         PowerPellet.color = new Color(255, 255, 255, 0);
@@ -24,5 +25,10 @@ public class Power_Pellet_UI : MonoBehaviour
             PowerPellet.color = new Color(255, 255, 255, 0);
         }
 
+    }
+    public void EnemyDeath()
+    {
+        audiosource.clip = enemyDeath;
+        audiosource.Play();
     }
 }

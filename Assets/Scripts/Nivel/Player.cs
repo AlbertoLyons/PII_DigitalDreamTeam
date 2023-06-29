@@ -36,6 +36,7 @@ public class Player : MonoBehaviour{
     [SerializeField] private Shield_UI escudo;
     [SerializeField] private Power_Pellet_UI powerPelletUI;
     [SerializeField] private Multiplier_UI multiplicadorUI;
+    [SerializeField] public Coin_UI coinUI;
     //[SerializeField] private GameObject particulas;
 
 
@@ -57,24 +58,24 @@ public class Player : MonoBehaviour{
         //particulaMovimiento.transform.Translate(transform.position.x,transform.position.y,0);
         if(this != null){
             //Movimiento a la izquierda
-            if (Input.GetKey(KeyCode.LeftArrow)) {
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
                 spriterenderer.flipX = true;
                 //particulas.SetActive(true);
                 transform.Translate(-velocidad, 0, 0);
                 animator.SetBool("Derecha", true);
             }
-            if (Input.GetKeyUp(KeyCode.LeftArrow)) {
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A)) {
                 animator.SetBool("Derecha", false);
                 
             }
             //Movimiento a la derecha
-            if (Input.GetKey(KeyCode.RightArrow)) {
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
                 spriterenderer.flipX = false;
                 //particulas.SetActive(true);
                 transform.Translate(velocidad, 0, 0);
                 animator.SetBool("Derecha", true);
             }
-            if (Input.GetKeyUp(KeyCode.RightArrow)) {
+            if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D)) {
                 animator.SetBool("Derecha", false);
                 
             }
@@ -103,11 +104,12 @@ public class Player : MonoBehaviour{
         if (other.gameObject.CompareTag("coin")) 
         {
             other.gameObject.SetActive(false);
-            audiosource.clip = coinSound;
-            audiosource.Play();
+            // audiosource.clip = coinSound;
+            // audiosource.Play();
             coins = coins + 1*multiplicador;
             var HudManager = FindObjectOfType<hudManager>();
             HudManager.AddMoney(coins);
+            coinUI.RecogeMoneda();
         }
         if (other.gameObject.CompareTag("Escudo")) 
         {
@@ -175,13 +177,12 @@ public class Player : MonoBehaviour{
         {
 	        if (isPowerPellet) {
                 other.gameObject.SetActive(false);
-                audiosource.clip = enemyDeath;
-                audiosource.Play();
+                powerPelletUI.EnemyDeath();
                 particulasMuerteEnemigo.transform.position = new Vector3(other.gameObject.transform.position.x,other.gameObject.transform.position.y,0);
                 particulasMuerteEnemigo.SetActive(true);
                 StartCoroutine(EnemyParticleDeath(1));
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
             {
                 particulasDodge.Play();
                 audiosource.clip = dodgeSound;
@@ -203,7 +204,7 @@ public class Player : MonoBehaviour{
         }
         if (other.gameObject.CompareTag("Disparo")) {
             Destroy(other.gameObject);
-            if (Input.GetKey(KeyCode.UpArrow)){
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)){
                 particulasDodge.Play();
                 audiosource.clip = dodgeSound;
                 audiosource.Play();
