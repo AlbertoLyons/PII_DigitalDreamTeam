@@ -18,6 +18,7 @@ public class hudManager : GenericSingleton<hudManager>
 
     void Start()
     {
+        isPausado = false;
         menuPausa.SetActive(false);
     }
 
