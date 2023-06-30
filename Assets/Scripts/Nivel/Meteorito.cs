@@ -11,7 +11,7 @@ public class Meteorito : MonoBehaviour
     public GameObject menuMuerte;
     public GameObject particulas;
     private AudioMenu menu;
-    private float auxVelocidad = velocidad;
+    public static float auxVelocidad = velocidad;
     public GameObject player;
     public GameObject generadorNivel;
    

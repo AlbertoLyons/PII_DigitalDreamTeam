@@ -205,7 +205,7 @@ public class Player : MonoBehaviour{
             audiosource.Play();
             Time.timeScale = 0.5f;
             rb.gravityScale = 4.9f;
-            Meteorito.velocidad = Meteorito.velocidad*0.5f;
+            Meteorito.auxVelocidad = Meteorito.auxVelocidad*0.5f;
             slowScreen.SetActive(true);
             StartCoroutine(slowTime(2 + PlayerPrefs.GetInt(Manager_Tienda.keyCompras[2])));
         }
@@ -315,7 +315,7 @@ public class Player : MonoBehaviour{
         yield return new WaitForSeconds(segundos);
         Time.timeScale = 1f;
         slowScreen.SetActive(false);
-        Meteorito.velocidad = 0.07f;
+        Meteorito.auxVelocidad = 0.07f;
         rb.gravityScale = 1.9f;
     }
     IEnumerator coinMultiplier(int segundos, string multiplier)
@@ -363,6 +363,7 @@ public class Player : MonoBehaviour{
     }
     void ResetParry() {
         canParry = true;
+        particulasDodge.Stop();
     }
     public float VelocidadDeMovimiento()
     {
