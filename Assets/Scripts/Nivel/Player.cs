@@ -10,6 +10,7 @@ public class Player : MonoBehaviour{
     
     [SerializeField] public static float velocidad;
     [SerializeField] public static int coins = 0;
+    [SerializeField] public static int ScorePoints = 0;
     [SerializeField] private float parryCooldown = 1f;
     private bool canParry = true; 
     [SerializeField] private GameObject particulasMuerteEnemigo;
@@ -123,7 +124,9 @@ public class Player : MonoBehaviour{
         if(other.gameObject.CompareTag("coin"))
         {
             coins = coins + 1*multiplicador;
+            ScorePoints = coins * 100;
             var HudManager = FindObjectOfType<hudManager>();
+            HudManager.AddScore(ScorePoints);
             HudManager.AddMoney(coins);
             coinUI.RecogeMoneda();
         }
@@ -141,8 +144,10 @@ public class Player : MonoBehaviour{
             // audiosource.clip = coinSound;
             // audiosource.Play();
             coins = coins + 1*multiplicador;
+            ScorePoints = coins * 100;
             var HudManager = FindObjectOfType<hudManager>();
             HudManager.AddMoney(coins);
+            HudManager.AddScore(ScorePoints);
             coinUI.RecogeMoneda();
             if(randomNumber == 10){
                 lluviaMonedas.Play();

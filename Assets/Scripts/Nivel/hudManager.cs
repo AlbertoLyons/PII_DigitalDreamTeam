@@ -8,6 +8,8 @@ public class hudManager : GenericSingleton<hudManager>
     public static bool isPausado;
     public GameObject menuPausa;
     public TextMeshProUGUI _textMoneyCount; //serializefield hace que el valor privado se vea en el unity
+    public TextMeshProUGUI _textPuntaje;
+    public int _contadorpuntaje;
     public int _moneyCount;
     private float auxVelocidad;
     private float auxMeteorito;
@@ -92,5 +94,12 @@ public class hudManager : GenericSingleton<hudManager>
 
         _textMoneyCount.text = "" + _moneyCount;
 
+    }
+
+    public void AddScore(int value)
+    {
+        _contadorpuntaje = value;
+
+        _textPuntaje.text = "" + _contadorpuntaje;
     }
 }
