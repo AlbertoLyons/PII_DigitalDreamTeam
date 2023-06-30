@@ -1388,6 +1388,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPausa: {fileID: 979321160}
   _textMoneyCount: {fileID: 1369605123}
+  _textPuntaje: {fileID: 354788944}
+  _contadorpuntaje: 0
   _moneyCount: 0
 --- !u!4 &297550084
 Transform:
@@ -6324,7 +6326,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298500677}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -8359,7 +8361,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 708853662}
+  player: {fileID: 0}
   childTransform: {fileID: 1654273592}
+  fieldOfViewAngle: 0
 --- !u!50 &708853658
 Rigidbody2D:
   serializedVersion: 4
