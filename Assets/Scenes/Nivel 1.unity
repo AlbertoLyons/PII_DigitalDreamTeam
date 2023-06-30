@@ -1422,7 +1422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &298443512
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -1512,7 +1512,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -7290,6 +7290,7 @@ MonoBehaviour:
   particulasDisparo: {fileID: 1272230019}
   particulasDisparo2: {fileID: 1132234401}
   particulasDodge: {fileID: 1572801099}
+  lluviaMonedas: {fileID: 298443513}
   slowScreen: {fileID: 1612930553}
   multiplicador: 1
   isBotasMas: 0
@@ -7305,6 +7306,7 @@ MonoBehaviour:
   time: {fileID: 8300000, guid: 7ad8e5d93a9a5124992b8906bfad08cd, type: 3}
   Ralentizacion: {fileID: 8300000, guid: 5dba7fc449f57984983c0665c1bb5bb5, type: 3}
   enemyDeath: {fileID: 8300000, guid: 23d592cd9f38b464ab14e12ed65defa9, type: 3}
+  lluviaSonido: {fileID: 8300000, guid: ad7713f1f84a5654abb98ad1aa996d55, type: 3}
   escudo: {fileID: 643911780}
   powerPelletUI: {fileID: 1021997671}
   multiplicadorUI: {fileID: 268315751}
