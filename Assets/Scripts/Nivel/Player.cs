@@ -20,6 +20,9 @@ public class Player : MonoBehaviour{
     [SerializeField] private GameObject slowScreen;
     public static Rigidbody2D rb;
 
+    [SerializeField] float fuerza;
+    public bool tocandoSuelo;
+
     //[SerializeField] private int HP = 6;
     [SerializeField] public static int countShield = 0;
     [SerializeField] private int multiplicador = 1;
@@ -87,12 +90,20 @@ public class Player : MonoBehaviour{
                 animator.SetBool("Derecha", false);
                 
             }
+
+            //Salto
+            if (Input.GetKeyDown(KeyCode.Space) && tocandoSuelo == true){
+
+                rb.AddForce(Vector2.up * fuerza, ForceMode2D.Impulse);
+                tocandoSuelo = false;
+            }
+
             //Condiciones del parry
-            if (Input.GetKey(KeyCode.UpArrow) && canParry || Input.GetKey(KeyCode.Space) && canParry) {
+            if (Input.GetKey(KeyCode.UpArrow) && canParry) {
                 spriterenderer.color = Color.green;
                 
             }
-            if (Input.GetKeyUp(KeyCode.UpArrow) && canParry || Input.GetKeyUp(KeyCode.Space) && canParry) {
+            if (Input.GetKeyUp(KeyCode.UpArrow) && canParry) {
                 spriterenderer.color = new Color(225,250,223,255);
             }
 
@@ -188,7 +199,7 @@ public class Player : MonoBehaviour{
             audiosource.clip = time;
             audiosource.Play();
             Time.timeScale = 0.5f;
-            rb.gravityScale = 3f;
+            rb.gravityScale = 4.9f;
             Meteorito.velocidad = Meteorito.velocidad*0.5f;
             slowScreen.SetActive(true);
             StartCoroutine(slowTime(2 + PlayerPrefs.GetInt(Manager_Tienda.keyCompras[2])));
@@ -390,5 +401,14 @@ public class Player : MonoBehaviour{
             return velocidadSinBotasMenos;
         }
         return VelocidadDeMovimiento(); 
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Pasto")
+        {
+            tocandoSuelo = true;
+        }
+
     }
 }
