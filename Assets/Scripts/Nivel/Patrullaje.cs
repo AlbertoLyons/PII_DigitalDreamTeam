@@ -58,9 +58,6 @@ public class Patrullaje : MonoBehaviour
         // Atacar al jugador
         animator.SetBool("Attack", true);
         var playerTransform = other.gameObject.transform;
-
-        if (distanceX > fieldOfViewAngle && distanceY < 1)
-        {
           if (transform.position.x > other.transform.position.x)
           {
             StartCoroutine(test(other, 200));
@@ -69,7 +66,7 @@ public class Patrullaje : MonoBehaviour
           {
             StartCoroutine(test(other, -200));
           }
-      }
+      
     }
 
     private IEnumerator test(Collider2D other, int value){

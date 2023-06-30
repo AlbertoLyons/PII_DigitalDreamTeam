@@ -55,8 +55,13 @@ public class Player : MonoBehaviour{
         countShield = 0;
         spriterenderer = GetComponent<SpriteRenderer>();
         coins = 0;
-        
+        //InvokeRepeating("AddScoreRepeated", 1f, 0.5f);
     }
+
+    //private void AddScoreRepeated(){
+    //    ScorePoints++;
+    //   Debug.Log(ScorePoints);
+    //}
 
     // Update is called once per frame
     void Update(){
