@@ -6326,7 +6326,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298500677}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -7438,7 +7438,6 @@ MonoBehaviour:
   isRalentizado: 0
   isPowerPellet: 0
   audiosource: {fileID: 551013806}
-  coinSound: {fileID: 8300000, guid: 4132f3199802d0249bdbc9f000958240, type: 3}
   dodgeSound: {fileID: 8300000, guid: c00f5d62d1ec1d84985544950672f9f1, type: 3}
   damageSound: {fileID: 8300000, guid: 9ffc78c465beb8e40aed342e0ff6501a, type: 3}
   fastBoots: {fileID: 8300000, guid: 782dd91ae9e9a46498c3b36ba37df4c8, type: 3}
@@ -25890,7 +25889,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0

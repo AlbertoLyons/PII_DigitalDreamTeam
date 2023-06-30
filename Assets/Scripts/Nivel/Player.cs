@@ -33,7 +33,6 @@ public class Player : MonoBehaviour{
     [SerializeField] private bool isPowerPellet;
 
     [SerializeField] private AudioSource audiosource;
-    [SerializeField] private AudioClip coinSound;
     [SerializeField] private AudioClip dodgeSound;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip fastBoots;
@@ -47,7 +46,6 @@ public class Player : MonoBehaviour{
     [SerializeField] private Power_Pellet_UI powerPelletUI;
     [SerializeField] private Multiplier_UI multiplicadorUI;
     [SerializeField] public Coin_UI coinUI;
-    //[SerializeField] private GameObject particulas;
 
 
     // Start is called before the first frame update
@@ -55,7 +53,6 @@ public class Player : MonoBehaviour{
         rb = GetComponent<Rigidbody2D>();
         velocidad = VelocidadDeMovimiento();
         countShield = 0;
-        //coinSound = GetComponent<>
         spriterenderer = GetComponent<SpriteRenderer>();
         coins = 0;
         
@@ -66,12 +63,10 @@ public class Player : MonoBehaviour{
         // Guardado de monedas
         PlayerPrefs.SetInt("run_coins", coins);
 
-        //particulaMovimiento.transform.Translate(transform.position.x,transform.position.y,0);
         if(this != null){
             //Movimiento a la izquierda
             if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
                 spriterenderer.flipX = true;
-                //particulas.SetActive(true);
                 transform.Translate(-velocidad, 0, 0);
                 animator.SetBool("Derecha", true);
             }
@@ -83,7 +78,6 @@ public class Player : MonoBehaviour{
             //Movimiento a la derecha
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
                 spriterenderer.flipX = false;
-                //particulas.SetActive(true);
                 transform.Translate(velocidad, 0, 0);
                 animator.SetBool("Derecha", true);
             }
@@ -108,12 +102,6 @@ public class Player : MonoBehaviour{
                 spriterenderer.color = new Color(225,250,223,255);
             }
 
-            /*
-            if (Input.GetKeyUp(KeyCode.RightArrow) && Input.GetKeyUp(KeyCode.LeftArrow))
-            {
-                particulas.SetActive(false);
-            }
-            */
         }
         else{ Debug.Log(""); }
     }
@@ -133,7 +121,6 @@ public class Player : MonoBehaviour{
 
     }
     
-
     void OnTriggerEnter2D(Collider2D other) 
     {
     
@@ -141,8 +128,6 @@ public class Player : MonoBehaviour{
         {
             var randomNumber = Random.Range(1,30);
             other.gameObject.SetActive(false);
-            // audiosource.clip = coinSound;
-            // audiosource.Play();
             coins = coins + 1*multiplicador;
             ScorePoints = coins * 100;
             var HudManager = FindObjectOfType<hudManager>();
@@ -232,14 +217,6 @@ public class Player : MonoBehaviour{
             {   
                 PerformParry();
             }
-            /*
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
-            {
-                particulasDodge.Play();
-                audiosource.clip = dodgeSound;
-                audiosource.Play();
-            }
-            */
             else if (countShield > 0) 
             {
                 countShield--;
@@ -260,13 +237,7 @@ public class Player : MonoBehaviour{
             {   
                 PerformParry();
             }
-            /*
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space)){
-                particulasDodge.Play();
-                audiosource.clip = dodgeSound;
-                audiosource.Play();
-            }
-            */
+
             else if (countShield > 0) {
                 countShield--;
                 particulasDodge.Play();

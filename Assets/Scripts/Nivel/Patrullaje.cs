@@ -63,11 +63,11 @@ public class Patrullaje : MonoBehaviour
         {
           if (transform.position.x > other.transform.position.x)
           {
-            StartCoroutine(test(other, 250));
+            StartCoroutine(test(other, 200));
           }
         }else
           {
-            StartCoroutine(test(other, -250));
+            StartCoroutine(test(other, -200));
           }
       }
     }

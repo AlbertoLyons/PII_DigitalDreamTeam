@@ -151,7 +151,7 @@ public class Manager_Tienda : MonoBehaviour
     public void MeatGenerator()
     {
         coins++;
-        coins = coins * 999;
+        coins = coins * 99;
         coinUI.text = coins.ToString();
         IsComprable();  
     }
