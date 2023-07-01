@@ -101,20 +101,26 @@ public class Player : MonoBehaviour{
             }
 
             //Salto
-            if (Input.GetKeyDown(KeyCode.Space) && tocandoSuelo == true){
+            if (Input.GetKeyDown(KeyCode.W) && tocandoSuelo == true){
+
+                rb.AddForce(Vector2.up * fuerza, ForceMode2D.Impulse);
+                tocandoSuelo = false;
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow) && tocandoSuelo == true){
 
                 rb.AddForce(Vector2.up * fuerza, ForceMode2D.Impulse);
                 tocandoSuelo = false;
             }
 
             //Condiciones del parry
-            if (Input.GetKey(KeyCode.UpArrow) && canParry) {
+            if (Input.GetKey(KeyCode.Space) && canParry) {
                 spriterenderer.color = Color.green;
                 
             }
-            if (Input.GetKeyUp(KeyCode.UpArrow) && canParry) {
+            if (Input.GetKeyUp(KeyCode.Space) && canParry) {
                 spriterenderer.color = new Color(225,250,223,255);
             }
+            
 
         }
         else{ Debug.Log(""); }
@@ -158,6 +164,7 @@ public class Player : MonoBehaviour{
             other.gameObject.SetActive(false);
             countShield = 3 + PlayerPrefs.GetInt(Manager_Tienda.keyCompras[1]);
             escudo.shieldColor(true);
+            ScorePoints = ScorePoints + 150;
         }
         if (other.gameObject.CompareTag("PowerPellet")) 
         {
@@ -165,6 +172,7 @@ public class Player : MonoBehaviour{
             isPowerPellet = true;
             powerPelletUI.PowerColor(isPowerPellet);
             StartCoroutine(PowerPellet(4 + 2 * PlayerPrefs.GetInt(Manager_Tienda.keyCompras[3])));
+            ScorePoints = ScorePoints + 150;
         }
         //////////////////////////////////////////////////
         if (other.gameObject.CompareTag("CoinsX2")) 
@@ -174,6 +182,7 @@ public class Player : MonoBehaviour{
             multiplicador = 2;
             multiplicadorUI.showMultiplier("X2");
             StartCoroutine(coinMultiplier(4 + 5 * PlayerPrefs.GetInt(Manager_Tienda.keyCompras[4]), "X2"));
+            ScorePoints = ScorePoints + 150;
         }
         if (other.gameObject.CompareTag("CoinsX3")) 
         {
@@ -182,6 +191,7 @@ public class Player : MonoBehaviour{
             multiplicador = 3;
             multiplicadorUI.showMultiplier("X3");
             StartCoroutine(coinMultiplier(4  + 5 * PlayerPrefs.GetInt(Manager_Tienda.keyCompras[5]), "X3"));
+            ScorePoints = ScorePoints + 150;
         }
         ////////////////////////////////////////////////////
         if (other.gameObject.CompareTag("BotasMas")) 
@@ -193,6 +203,7 @@ public class Player : MonoBehaviour{
             isBotasMas = true;
             velocidad = VelocidadConBotasMas();
             StartCoroutine(BotasMas(4));
+            ScorePoints = ScorePoints + 150;
         }
         if (other.gameObject.CompareTag("Reloj")) 
         {
@@ -205,6 +216,7 @@ public class Player : MonoBehaviour{
             Meteorito.auxVelocidad = Meteorito.auxVelocidad*0.5f;
             slowScreen.SetActive(true);
             StartCoroutine(slowTime(2 + PlayerPrefs.GetInt(Manager_Tienda.keyCompras[2])));
+            ScorePoints = ScorePoints + 150;
         }
         if (other.gameObject.CompareTag("BotasMenos")) 
         {
@@ -215,6 +227,7 @@ public class Player : MonoBehaviour{
             isBotasMenos = true;
             velocidad = VelocidadConBotasMenos();
             StartCoroutine(BotasMenos(4));
+            ScorePoints = ScorePoints - 150;
         }
         if (other.gameObject.CompareTag("Enemy")) 
         {
@@ -343,6 +356,7 @@ public class Player : MonoBehaviour{
         canParry = false;
         spriterenderer.color = new Color(225,250,223,255);
         Invoke("ResetParry", parryCooldown);
+        ScorePoints = ScorePoints + 50;
 
     }
     void ResetParry() {
