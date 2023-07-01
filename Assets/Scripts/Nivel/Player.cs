@@ -11,6 +11,9 @@ public class Player : MonoBehaviour{
     [SerializeField] public static float velocidad;
     [SerializeField] public static int coins = 0;
     [SerializeField] public static int ScorePoints = 0;
+    [SerializeField] public static int ScorePoints_2 = 0;
+    [SerializeField] public static int ScorePoints_3 = 0;
+    [SerializeField] public static int ScorePoints_4 = 0;
     [SerializeField] private float parryCooldown = 1f;
     private bool canParry = true; 
     [SerializeField] private GameObject particulasMuerteEnemigo;
@@ -55,13 +58,19 @@ public class Player : MonoBehaviour{
         countShield = 0;
         spriterenderer = GetComponent<SpriteRenderer>();
         coins = 0;
-        //InvokeRepeating("AddScoreRepeated", 1f, 0.5f);
+        ScorePoints = 0;
+        ScorePoints_2 = 0;
+        ScorePoints_3 = 0;
+        ScorePoints_4 = 0;
+        InvokeRepeating("AddScoreRepeated", 0f, 0.5f);
     }
 
-    //private void AddScoreRepeated(){
-    //    ScorePoints++;
-    //   Debug.Log(ScorePoints);
-    //}
+    private void AddScoreRepeated(){
+        ScorePoints_2++;
+        ScorePoints_3 = ScorePoints + ScorePoints_2 + ScorePoints_4;
+        var HudManager = FindObjectOfType<hudManager>();
+        HudManager.AddScore(ScorePoints_3);
+    }
 
     // Update is called once per frame
     void Update(){
@@ -119,7 +128,6 @@ public class Player : MonoBehaviour{
             coins = coins + 1*multiplicador;
             ScorePoints = coins * 100;
             var HudManager = FindObjectOfType<hudManager>();
-            HudManager.AddScore(ScorePoints);
             HudManager.AddMoney(coins);
             coinUI.RecogeMoneda();
         }
@@ -137,7 +145,6 @@ public class Player : MonoBehaviour{
             ScorePoints = coins * 100;
             var HudManager = FindObjectOfType<hudManager>();
             HudManager.AddMoney(coins);
-            HudManager.AddScore(ScorePoints);
             coinUI.RecogeMoneda();
             if(randomNumber == 10){
                 lluviaMonedas.Play();
@@ -214,6 +221,7 @@ public class Player : MonoBehaviour{
 	        if (isPowerPellet) {
                 other.gameObject.SetActive(false);
                 powerPelletUI.EnemyDeath();
+                ScorePoints_4 = 500;
                 particulasMuerteEnemigo.transform.position = new Vector3(other.gameObject.transform.position.x,other.gameObject.transform.position.y,0);
                 particulasMuerteEnemigo.SetActive(true);
                 StartCoroutine(EnemyParticleDeath(1));
