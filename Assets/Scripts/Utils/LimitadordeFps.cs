@@ -9,12 +9,15 @@ public class LimitadordeFps : MonoBehaviour
 
     void Start()
     {
-        Application.targetFrameRate = limiteDeFPS;
-        QualitySettings.vSyncCount = 1;
+        QualitySettings.vSyncCount = 0;
     }
 
     void Update()
     {
+        if (limiteDeFPS != Application.targetFrameRate)
+        {
+            Application.targetFrameRate = limiteDeFPS;
+        }
         
     }
 }

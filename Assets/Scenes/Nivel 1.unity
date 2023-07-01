@@ -1016,7 +1016,6 @@ GameObject:
   - component: {fileID: 239072455}
   - component: {fileID: 239072454}
   - component: {fileID: 239072457}
-  - component: {fileID: 239072458}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1109,19 +1108,6 @@ MonoBehaviour:
   maximo: {x: -12.06, y: 0}
   suavizado: 0.01
   velocity: {x: 0, y: 0}
---- !u!114 &239072458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239072453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb388c4cf87327048a8884297175bd0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  limiteDeFPS: 60
 --- !u!1 &268315749
 GameObject:
   m_ObjectHideFlags: 0
@@ -7567,7 +7553,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!82 &551013806
 AudioSource:
@@ -36565,7 +36551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1878159801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36573,7 +36559,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878159800}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb388c4cf87327048a8884297175bd0e, type: 3}
   m_Name: 
