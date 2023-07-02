@@ -769,6 +769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9203704214344966750}
   - component: {fileID: 9203704214344966751}
+  - component: {fileID: 6165221553727066688}
   m_Layer: 0
   m_Name: ground_detect
   m_TagString: Untagged
@@ -817,6 +818,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.039770667, y: 0.3182063}
   m_EdgeRadius: 0
+--- !u!114 &6165221553727066688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203704214344966737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b6117c362a0f348a4a906317ac7aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9203704215272565744
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +844,7 @@ GameObject:
   - component: {fileID: 9203704215272565758}
   - component: {fileID: 9203704215272565755}
   - component: {fileID: 9203704215272565752}
+  - component: {fileID: 8987549499753669880}
   m_Layer: 0
   m_Name: Slime_Blue
   m_TagString: Enemy
@@ -940,6 +954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9203704215272565752}
+  player: {fileID: 0}
   childTransform: {fileID: 9203704214344966750}
 --- !u!60 &9203704215272565755
 PolygonCollider2D:
@@ -996,3 +1011,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8987549499753669880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203704215272565744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b6117c362a0f348a4a906317ac7aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

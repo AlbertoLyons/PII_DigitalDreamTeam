@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 6725836423260293682}
   - component: {fileID: 6725836423260293687}
   - component: {fileID: 6725836423260293684}
+  - component: {fileID: 8724938477583623659}
   m_Layer: 0
   m_Name: Slime_Blue
   m_TagString: Enemy
@@ -375,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6725836423260293684}
+  player: {fileID: 0}
   childTransform: {fileID: 6725836424186839954}
 --- !u!60 &6725836423260293687
 PolygonCollider2D:
@@ -431,6 +433,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8724938477583623659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725836423260293692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b6117c362a0f348a4a906317ac7aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  rango_vision: 0
 --- !u!1 &6725836424186839965
 GameObject:
   m_ObjectHideFlags: 0

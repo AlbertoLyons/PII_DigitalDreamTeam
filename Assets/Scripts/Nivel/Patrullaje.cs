@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Patrullaje : MonoBehaviour
 {
     [SerializeField] private Animator animator;
@@ -10,93 +9,68 @@ public class Patrullaje : MonoBehaviour
     public GameObject player;
     private float speed = 2f;
     public Transform childTransform;
-    public float fieldOfViewAngle;
 
     // Start is called before the first frame update
     void Awake()
     {
-      m_rig=GetComponent<Rigidbody2D>();
-        
-
+      m_rig = GetComponent<Rigidbody2D>();
+      animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-      m_rig.velocity = new Vector2(speed , m_rig.velocity.y);  
-    }
 
-    private void OnTriggerExit2D(Collider2D other){
-
-      if(other.gameObject.tag == "Pasto")
-      {
-        speed *= -1;
-
-        childTransform.localPosition = new Vector3(-childTransform.localPosition.x, childTransform.localPosition.y, 0);
-
-      }
-
-      if (other.gameObject.CompareTag("Player"))
-      {
-        // Dejar de atacar al jugador
-        animator.SetBool("Attack", false);
-     }
+      m_rig.velocity = new Vector2(speed, m_rig.velocity.y);
 
     }
 
-    //float distanceX = transform.position.x - other.transform.position.x;
-    //float distanceY = transform.position.y - other.transform.position.y;
-
-
-    private void OnTriggerEnter2D(Collider2D other){
-
-      float distanceX = transform.position.x - other.transform.position.x;
-      float distanceY = transform.position.y - other.transform.position.y;
-
-     if (other.gameObject.CompareTag("Player"))
-     {
-        // Atacar al jugador
-        animator.SetBool("Attack", true);
-        var playerTransform = other.gameObject.transform;
-          if (transform.position.x > other.transform.position.x)
-          {
-            StartCoroutine(test(other, 200));
-          }
-        }else
-          {
-            StartCoroutine(test(other, -200));
-          }
-      
-    }
-
-    private IEnumerator test(Collider2D other, int value){
-      yield return new WaitForSeconds(0.08f);
-      other.attachedRigidbody.AddForce(Vector2.left*value);
-    }
-
-
-    bool IsPlayerInFieldOfView()
+    private void OnTriggerExit2D(Collider2D other)
     {
-      if (player == null)
-      {
-          return false;
-      }
-      else
-      {
-        Vector3 direction = player.transform.position - transform.position;
-        float angle = Vector3.Angle(direction, transform.right);
-
-        if (angle <= fieldOfViewAngle * 0.5f)
+        if (other.gameObject.tag == "Pasto")
         {
-            // El jugador está dentro del campo de visión
-            return true;
+            speed *= -1;
+            childTransform.localPosition = new Vector3(-childTransform.localPosition.x, childTransform.localPosition.y, 0);
         }
 
-        // El jugador está fuera del campo de visión
-        return false;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // Dejar de atacar al jugador
+            //animator.SetBool("Attack", false);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        float distanceX = transform.position.x - other.transform.position.x;
+        float distanceY = transform.position.y - other.transform.position.y;
 
-      }
-        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // Atacar al jugador
+            //animator.SetBool("Attack", true);
+            
+
+            if (distanceY < 1)
+            {
+              Vector2 pushDirection = Vector2.left;
+              float pushForce = 10f; // Fuerza de empuje
+
+              if (distanceX > 0)
+              {
+                PushObject(other.attachedRigidbody, pushDirection, pushForce);
+              }
+              else
+              {
+                PushObject(other.attachedRigidbody, -pushDirection, pushForce);
+              }
+            }
+        }
+    }
+
+    private void PushObject(Rigidbody2D rb, Vector2 direction, float force)
+    {
+        rb.velocity = Vector2.zero; // Reiniciar la velocidad del objeto
+        rb.AddForce(direction * force, ForceMode2D.Impulse); // Aplicar el impulso de empuje
     }
 
 }

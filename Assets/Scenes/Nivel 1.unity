@@ -8446,7 +8446,6 @@ MonoBehaviour:
   animator: {fileID: 708853662}
   player: {fileID: 0}
   childTransform: {fileID: 1654273592}
-  fieldOfViewAngle: 0
 --- !u!50 &708853658
 Rigidbody2D:
   serializedVersion: 4
