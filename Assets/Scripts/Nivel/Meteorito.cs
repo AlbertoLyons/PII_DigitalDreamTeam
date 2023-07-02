@@ -24,7 +24,6 @@ public class Meteorito : MonoBehaviour
         auxVelocidad = 0.07f;
         Time.timeScale = 1f;
         velocidad = 0;
-        
     }
   
     void Update()
@@ -32,7 +31,13 @@ public class Meteorito : MonoBehaviour
         if (player.transform.position.y < 0.11f && player.activeSelf) {
             velocidad = auxVelocidad;
             generadorNivel.SetActive(true);
-        } else {generadorNivel.SetActive(false);}
+        } else {
+            generadorNivel.SetActive(false);
+            Player.ScorePoints = 0;
+            Player.ScorePoints_2 = 0;
+            Player.ScorePoints_3 = 0;
+            Player.ScorePoints_4 = 0;
+            }
         particulas.transform.Translate(0,-velocidad,0,Space.World);
         transform.Rotate(0,0,rotacion,Space.Self);
         transform.Translate(0,-velocidad,0,Space.World);
@@ -41,7 +46,8 @@ public class Meteorito : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             // muerte de jugador
-            other.gameObject.SetActive(false);
+            other.gameObject.GetComponent<Player>().enabled = false;
+            other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             audiosource.clip = sonidoMuerte;
             audiosource.Play();
             //guarda monedas de la run al morir y volver a jugar
@@ -62,6 +68,7 @@ public class Meteorito : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         audiosource.clip = musicaMuerte;
+        player.SetActive(false);
         audiosource.Play();
         menuMuerte.SetActive(true);
         Time.timeScale = 0f;
