@@ -8,6 +8,8 @@ public class Meteorito : MonoBehaviour
     public static float rotacion = 1.0f;
     public static float velocidad = 0.07f;
     public AudioSource audiosource;
+    public AudioClip musicaMuerte;
+    public AudioClip sonidoMuerte;
     public GameObject menuMuerte;
     public GameObject particulas;
     private AudioMenu menu;
@@ -40,6 +42,7 @@ public class Meteorito : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) {
             // muerte de jugador
             other.gameObject.SetActive(false);
+            audiosource.clip = sonidoMuerte;
             audiosource.Play();
             //guarda monedas de la run al morir y volver a jugar
             PlayerPrefs.SetInt("run_coins", Player.coins);  
@@ -58,6 +61,8 @@ public class Meteorito : MonoBehaviour
     IEnumerator Coroutine()
     {
         yield return new WaitForSeconds(2);
+        audiosource.clip = musicaMuerte;
+        audiosource.Play();
         menuMuerte.SetActive(true);
         Time.timeScale = 0f;
         velocidad = 0f;

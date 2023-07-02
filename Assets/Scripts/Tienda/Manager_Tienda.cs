@@ -54,7 +54,7 @@ public class Manager_Tienda : MonoBehaviour
             //si no tiene suficiente dinero
             else if (coins <= itemsTiendaSO[i].precio)    
             {
-                BotonCompra[i].interactable = false;
+                // BotonCompra[i].interactable = false;
             }
         }
     }
