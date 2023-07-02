@@ -33,15 +33,12 @@ public class EnemyShooting : MonoBehaviour
 
         if (distanceX < 9 && distanceY < 1)
         {
-            if (timer > 2f)
-            {
-                timer = 0;
-                shoot();
-            }
+            animator.SetBool("disparo", true);
         }
         else
         {
             animator.SetBool("disparo", false);
+
         }
 
         if (distanceX > rango_vision && distanceY < 1)
@@ -74,6 +71,12 @@ public class EnemyShooting : MonoBehaviour
     void shoot()
     {
         Instantiate(proyectil, proyectilPos.position, Quaternion.identity);
-        animator.SetBool("disparo", true);
+        
+    }
+
+
+    public void ShootAnimationFinished()
+    {
+        shoot();
     }
 }
