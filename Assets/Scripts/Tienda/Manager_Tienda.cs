@@ -16,6 +16,8 @@ public class Manager_Tienda : MonoBehaviour
     public GameObject[] panelesTiendaGO;
     public Button[] BotonCompra;
     public static string[] keyCompras = {"cantVelocidad", "cantEscudo", "cantStopwatch", "cantPower Pellet", "cantCarne x2", "cantCarne x3"};
+    public AudioClip buyingSound;
+    public AudioSource audiosource;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +67,8 @@ public class Manager_Tienda : MonoBehaviour
         {            
             if (keyCompras.Contains("cant" + itemsTiendaSO[numBoton].nombre_item) && PlayerPrefs.GetInt("cant" + itemsTiendaSO[numBoton].nombre_item) < 7)
             {
+                audiosource.clip = buyingSound;
+                audiosource.Play();
                 //suma la cantidad de veces que se ha comprado la mejora
                 PlayerPrefs.SetInt("cant" + itemsTiendaSO[numBoton].nombre_item, PlayerPrefs.GetInt("cant" + itemsTiendaSO[numBoton].nombre_item) + 1);
                 Debug.Log("Compraste " + itemsTiendaSO[numBoton].nombre_item + ": " + (PlayerPrefs.GetInt("cant" + itemsTiendaSO[numBoton].nombre_item)));

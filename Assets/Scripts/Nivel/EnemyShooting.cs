@@ -31,7 +31,7 @@ public class EnemyShooting : MonoBehaviour
         float distanceX = Math.Abs(transform.position.x - player.transform.position.x);
         float distanceY = Math.Abs(transform.position.y - player.transform.position.y);
 
-        if (distanceX < 9 && distanceY < 1)
+        if (distanceX < 12 && distanceY < 1)
         {
             animator.SetBool("disparo", true);
         }

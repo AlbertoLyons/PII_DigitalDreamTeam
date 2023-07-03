@@ -3,7 +3,10 @@ guid: 24a773fe2fc50b44ba600384951b437a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - coinUI: {instanceID: 0}
+  - buyingSound: {instanceID: 0}
+  - audiosource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
