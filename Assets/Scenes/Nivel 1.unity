@@ -6458,6 +6458,7 @@ MonoBehaviour:
   particulas: {fileID: 2135961177}
   player: {fileID: 551013799}
   generadorNivel: {fileID: 1176462913}
+  playerScript: {fileID: 551013803}
 --- !u!82 &298500683
 AudioSource:
   m_ObjectHideFlags: 0
