@@ -16,6 +16,7 @@ public class Meteorito : MonoBehaviour
     public static float auxVelocidad = velocidad;
     public GameObject player;
     public GameObject generadorNivel;
+    public Player playerScript;
    
     private void Start()
     {
@@ -46,8 +47,11 @@ public class Meteorito : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             // muerte de jugador
-            other.gameObject.GetComponent<Player>().enabled = false;
+            playerScript.enabled = false;
             other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            other.gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            other.gameObject.transform.Find("Particulas Correr").gameObject.SetActive(false);
             audiosource.clip = sonidoMuerte;
             audiosource.Play();
             //guarda monedas de la run al morir y volver a jugar
