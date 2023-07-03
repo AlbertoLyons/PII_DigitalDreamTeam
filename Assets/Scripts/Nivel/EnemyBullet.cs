@@ -25,17 +25,6 @@ public class EnemyBullet : MonoBehaviour
             Vector3 direction = player.transform.position - transform.position;
             rb.velocity = new Vector2(direction.x, 0).normalized * force;
         }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (IsPlayerInFieldOfView())
-        {
-            // Disparar al jugador
-        }
-
         bool isFlipped = GetComponent<SpriteRenderer>().flipX;
 
         float distanceX = Math.Abs(transform.position.x - player.transform.position.x);
@@ -66,6 +55,22 @@ public class EnemyBullet : MonoBehaviour
                 }
             }
         }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (IsPlayerInFieldOfView())
+        {
+            // Disparar al jugador
+        }
+
+        bool isFlipped = GetComponent<SpriteRenderer>().flipX;
+
+        float distanceX = Math.Abs(transform.position.x - player.transform.position.x);
+        float distanceY = Math.Abs(transform.position.y - player.transform.position.y);
+
     }
 
     bool IsPlayerInFieldOfView()
