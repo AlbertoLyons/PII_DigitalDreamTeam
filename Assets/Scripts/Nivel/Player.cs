@@ -239,7 +239,7 @@ public class Player : MonoBehaviour{
                 particulasMuerteEnemigo.SetActive(true);
                 StartCoroutine(EnemyParticleDeath(1));
             }
-            if (Input.GetKey(KeyCode.UpArrow) && canParry || Input.GetKey(KeyCode.Space) && canParry)
+            if (Input.GetKey(KeyCode.Space) && canParry)
             {   
                 PerformParry();
             }
@@ -259,7 +259,7 @@ public class Player : MonoBehaviour{
         }
         if (other.gameObject.CompareTag("Disparo")) {
             Destroy(other.gameObject);
-            if (Input.GetKey(KeyCode.UpArrow) && canParry || Input.GetKey(KeyCode.Space) && canParry)
+            if (Input.GetKey(KeyCode.Space) && canParry)
             {   
                 PerformParry();
             }
