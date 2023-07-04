@@ -830,6 +830,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b6117c362a0f348a4a906317ac7aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  rango_vision: 0
 --- !u!1 &9203704215272565744
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,15 +983,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.03650068, y: -0.079919145}
-      - {x: -0.06930059, y: -0.11336291}
+    - - {x: -0.024859674, y: -0.10366702}
+      - {x: -0.04003562, y: -0.108400054}
+      - {x: -0.056229662, y: -0.11492165}
+      - {x: -0.060453214, y: -0.116622396}
       - {x: -0.07883906, y: -0.17358594}
       - {x: -0.06767841, y: -0.19313987}
       - {x: -0.05581835, y: -0.2031399}
       - {x: 0.08511922, y: -0.205}
       - {x: 0.093259156, y: -0.15895844}
-      - {x: 0.074739434, y: -0.0995829}
-      - {x: 0.03187515, y: -0.07616067}
+      - {x: 0.06030452, y: -0.107964486}
+      - {x: 0.01976849, y: -0.102702454}
 --- !u!95 &9203704215272565752
 Animator:
   serializedVersion: 5
@@ -1023,3 +1027,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b6117c362a0f348a4a906317ac7aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  rango_vision: 0

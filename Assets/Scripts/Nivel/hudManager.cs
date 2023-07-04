@@ -16,6 +16,8 @@ public class hudManager : GenericSingleton<hudManager>
     private float rbAux;
     private float auxMeteoritoVelocidad;
     private float auxTime;
+    [SerializeField] private AudioClip buttonSound;
+    [SerializeField] private AudioSource audiosource;
 
 
     void Start()
@@ -44,6 +46,8 @@ public class hudManager : GenericSingleton<hudManager>
     {
         AudioMenu menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
         menuPausa.SetActive(true);
+        audiosource.clip = buttonSound;
+        audiosource.Play();
         if (Time.timeScale == 0.5f) {
             auxTime = 0.5f;
             auxVelocidad = Player.velocidad;
@@ -77,6 +81,8 @@ public class hudManager : GenericSingleton<hudManager>
         {
             AudioMenu menu = GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioMenu>();
             menuPausa.SetActive(false);
+            audiosource.clip = buttonSound;
+            audiosource.Play();
             Time.timeScale = auxTime;
             isPausado = false;
             Player.velocidad = auxVelocidad;

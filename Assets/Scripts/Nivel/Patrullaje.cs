@@ -53,7 +53,7 @@ public class Patrullaje : MonoBehaviour
             if (distanceY < 1)
             {
               Vector2 pushDirection = Vector2.left;
-              float pushForce = 10f; // Fuerza de empuje
+              float pushForce = 9f; // Fuerza de empuje
 
               if (distanceX > 0)
               {

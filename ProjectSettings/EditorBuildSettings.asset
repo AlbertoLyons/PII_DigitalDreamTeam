@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Ftienda.unity
+    guid: 0f6d6d25e311c6240b16312e4a79b32d
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 863a95fe1a6e1d54692192ca2b89b7ad
   - enabled: 0

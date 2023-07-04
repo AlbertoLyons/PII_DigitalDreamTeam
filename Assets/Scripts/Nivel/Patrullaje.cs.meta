@@ -3,7 +3,12 @@ guid: 05ec592a49fd3934891afaf82f25e376
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - damageSound: {fileID: 8300000, guid: 9ffc78c465beb8e40aed342e0ff6501a, type: 3}
+  - audiosource: {instanceID: 0}
+  - player: {instanceID: 0}
+  - childTransform: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

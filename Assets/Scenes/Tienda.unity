@@ -1211,6 +1211,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2502335769355964992, guid: ec6aa34bbd29a754383b3b7eea78049b, type: 3}
   m_PrefabInstance: {fileID: 203536915}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &499832879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 499832881}
+  - component: {fileID: 499832880}
+  m_Layer: 0
+  m_Name: Ftienda
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &499832880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499832879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7b7a98057865e4b95559acb70accb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &499832881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499832879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.452165, y: 1.0422367, z: 3.8892493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &536574725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2105,6 +2149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfef2e4abec9e7e41ba70408c225ab0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonSound: {fileID: 0}
+  audiosource: {fileID: 0}
 --- !u!1 &1048593153 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6647143558955660212, guid: ec6aa34bbd29a754383b3b7eea78049b, type: 3}
@@ -2880,6 +2926,7 @@ MonoBehaviour:
   - {fileID: 1815468850}
   buyingSound: {fileID: 8300000, guid: db8494e609fe1ea4e9f37df77835e0ca, type: 3}
   audiosource: {fileID: 1354601418}
+  tiempoEspera: 2
 --- !u!82 &1354601418
 AudioSource:
   m_ObjectHideFlags: 0
