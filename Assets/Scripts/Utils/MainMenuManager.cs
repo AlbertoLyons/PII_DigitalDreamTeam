@@ -9,6 +9,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private AudioSource audiosource;
 
     public void ChangeScene(string nameScene) {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(nameScene);
         audiosource.clip = buttonSound;
         audiosource.Play();

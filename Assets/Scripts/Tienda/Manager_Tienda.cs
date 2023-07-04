@@ -57,7 +57,7 @@ public class Manager_Tienda : MonoBehaviour
     void Update()
     {
         PlayerPrefs.SetInt("shop_coins", coins);
-        
+
         //HESOYAM
         if (!esperandoInputHESOYAM && Input.GetKeyDown(KeyCode.H))
         {
